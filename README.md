@@ -35,8 +35,8 @@ SQLite and the uploaded files live under `data/`.
 | Route | What's on it |
 |---|---|
 | `/` | Hero · **certification brandmark strip** · **What is a Coupler?** · Forged Before Threaded · Slim Wall · Products & Services · Manufacturing Process · **Testimonials** · **News & Events** · CTA |
-| `/about-us` | Story · stats · principles · **Knowledge Center (2 tabs)** · **News & Events** (full) · **tutorial video** · locations · CTA |
-| `/find-your-coupler` | **Batch lookup** → certificate + related documents · traceability chain · **"Can't find your batch?" → Request Your Quote / Request Assistance** · **gated Downloads library** · CTA |
+| `/about-us` | Story · stats · principles · **Knowledge Center (2 tabs)** · **News & Events** (full) · locations · CTA |
+| `/find-your-coupler` | **Batch lookup** → certificate + related documents · traceability chain · **"Can't find your batch?" → Request Your Quote / Request Assistance** · **gated Downloads library** (empty until AGBA publish files) · CTA |
 | `/contact` | Enquiry form (saves to the database) · clickable phone / email / WhatsApp / Maps · embedded map · GSTIN |
 
 Renamed from the old site: **Find Your Join → Find Your Coupler**. The page leads with the
@@ -54,7 +54,6 @@ Password-protected, `noindex`, absent from the sitemap.
 | Batches | batch/heat number, grade, size, class, dates, **certificate PDF**, related documents |
 | Documents | the Downloads library — upload, categorise, publish, reorder |
 | Testimonials | quote, name, role, company, project, rating, publish, order |
-| Tutorial Video | one video, **linked from YouTube/Vimeo, never uploaded** |
 | News & Events | title, date, category, excerpt, body, cover image, publish |
 | Leads | every enquiry, download and assistance request · CSV export |
 
@@ -158,4 +157,6 @@ ephemeral, so uploads and the database would vanish between deploys.
   confirms the licence; a certification mark is never drawn speculatively.
 - **Factory photographs** — captioned slots are reserved; the hero product and every
   technical diagram are hand-drawn SVG in the meantime.
-- **Tutorial video** — paste the YouTube link in the control panel under Tutorial Video.
+- **Downloads** — the library ships empty and shows a "documents are being prepared"
+  state. Upload the real drawings, data sheets, guides and certificates in the
+  control panel under Documents.

@@ -35,8 +35,8 @@ what makes control-panel edits appear without a rebuild. Do not remove it.
   → `lib/site.ts` (`SITE`, `ROUTES`, `NAV`, `CONTACT`, plus `waLink()`/`telLink()`/`mailLink()`
   helpers — never hand-build those URLs). Nav and footer read from here, so a phone number
   changes in one place.
-- **Dynamic content** → SQLite, edited at `/admin`. Batches, documents, testimonials, the
-  tutorial video, news, leads.
+- **Dynamic content** → SQLite, edited at `/admin`. Batches, documents, testimonials,
+  news, leads.
 
 Never hardcode content in JSX.
 
@@ -90,15 +90,17 @@ is fine.
 
 ## Client decisions worth not re-litigating
 
-- **Four pages only.** Downloads, Knowledge Center, News and the video are *sections inside*
-  the four pages, not new routes.
+- **Four pages only.** Downloads, Knowledge Center and News are *sections inside* the four
+  pages, not new routes.
 - "Find Your Join" was renamed **Find Your Coupler** (nav), with "Batch Traceability" as the
   page eyebrow and "Verify Your Batch" as the button — all three client suggestions used.
 - **Knowledge Center** is the renamed "Understanding the Code". No such section existed on
   the live site; it was written from scratch, two tabs, in `KNOWLEDGE` in `lib/data.ts`.
-- **One tutorial video, linked not uploaded.** The client cut a full video gallery for
-  storage reasons. `saveVideoAction` rejects anything that is not a YouTube/Vimeo URL —
-  keep it that way.
+- **The tutorial video was removed entirely** (2026-08-20) — the About Us section, the
+  control-panel manager, the actions, the queries and the `videos` table are all gone.
+  Do not rebuild it unless asked.
+- **The Downloads library ships empty** and renders a "documents are being prepared" state
+  with contact CTAs. AGBA publish the real files; the seed no longer creates placeholders.
 - **The ISI mark slot is deliberately empty** (`kind: "reserved"` in `CERTIFICATIONS.marks`).
   AGBA's BIS licence is unconfirmed; do not draw or imply a certification mark until the
   CM/L number is supplied.
