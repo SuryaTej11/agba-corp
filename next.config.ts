@@ -8,6 +8,8 @@ import type { NextConfig } from "next";
  * so no runtime connection) and the Google Maps embed on /contact. Anything
  * else is same-origin.
  */
+const isDev = process.env.NODE_ENV !== "production";
+
 const securityHeaders = [
   // Stop the browser guessing content types — the file route already sets
   // this, but it belongs on every response.
@@ -21,30 +23,40 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
   },
-  // Force HTTPS for two years once the certificate is live.
-  // NOTE: only takes effect over HTTPS; harmless on http://localhost.
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
+  // Force HTTPS for two years once the certificate is live. Omitted in dev so
+  // a browser never pins localhost to HTTPS.
+  ...(isDev
+    ? []
+    : [
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+      ]),
   {
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      // Next injects inline bootstrap scripts; 'unsafe-inline' is required for
-      // the App Router's hydration payload.
-      "script-src 'self' 'unsafe-inline'",
+      // Next injects inline bootstrap scripts, so 'unsafe-inline' is required
+      // for the App Router's hydration payload.
+      // React's *development* build additionally uses eval() for debugging —
+      // it never does in production — and Turbopack's HMR needs a WebSocket.
+      // Both relaxations are dev-only; the shipped policy stays strict.
+      isDev
+        ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+        : "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob:",
       "font-src 'self' data:",
       // The Maps embed on /contact.
       "frame-src 'self' https://www.google.com https://maps.google.com",
-      "connect-src 'self'",
+      isDev ? "connect-src 'self' ws: wss:" : "connect-src 'self'",
       "form-action 'self'",
       "base-uri 'self'",
       "frame-ancestors 'none'",
       "object-src 'none'",
-      "upgrade-insecure-requests",
+      // Only meaningful over HTTPS, so it would just noise up local dev.
+      ...(isDev ? [] : ["upgrade-insecure-requests"]),
     ].join("; "),
   },
 ];
