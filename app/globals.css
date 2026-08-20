@@ -1,0 +1,435 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   AGBA Corporation — design system
+
+   Light-first: roughly 70% of the page area is white or near-white, with
+   black and the brand red used as accent and for a handful of full-bleed
+   dark bands (process timeline, CTA, footer).
+
+   The brand red #d41000 is carried over from the original site and matches
+   the red in the AGBA brandmark; #4a4a4a is the graphite from the mark.
+
+   Everything is driven by the tokens below. `.on-dark` (further down)
+   re-points the same tokens at their dark values, so any component — panels,
+   forms, even the technical SVG illustrations — inverts correctly just by
+   being placed inside it. Never hardcode a colour in a component.
+   ========================================================================= */
+
+@theme {
+  /* --- surfaces ---------------------------------------------------------
+     `base` is the card / page ground. `surface` is the tinted alternating
+     band. `deep` is the true black used for the dark bands.               */
+  --color-base: #ffffff;
+  --color-surface: #f4f6f8;
+  --color-surface-2: #ffffff;
+  --color-surface-3: #eaedf1;
+  --color-deep: #0b0c0e;
+  --color-graphite: #4a4a4a;
+  --color-steel: #6b7280;
+  --color-line: #e2e6ea;
+  --color-line-2: #cbd1d8;
+
+  /* --- brand ------------------------------------------------------------ */
+  --color-red: #d41000;
+  --color-red-bright: #f5240f;
+  --color-red-dark: #a80d00;
+
+  /* --- text -------------------------------------------------------------
+     `heading` is the high-contrast colour for headings and emphasised copy;
+     it becomes white inside .on-dark, which is why no component should use
+     Tailwind's literal `text-white`.                                       */
+  --color-heading: #14171a;
+  --color-text: #14171a;
+  --color-muted: #545b63;
+  --color-muted-2: #858c95;
+
+  /* --- semantic --------------------------------------------------------- */
+  --color-ok: #15803d;
+  --color-warn: #b45309;
+
+  /* --- technical illustrations -------------------------------------------
+     The SVG diagrams draw with these so they read as engineering drawings
+     on white and as backlit schematics on black.                           */
+  --ill-deep: #dde2e7;
+  --ill-fill: #eef1f4;
+  --ill-fill-2: #e3e8ec;
+  --ill-mid: #c2c9d1;
+  --ill-grid: #e4e8ec;
+  --ill-stroke: #767d86;
+  --ill-label: #545b63;
+  --ill-bright: #14171a;
+  --ill-warn: #f0d3d0;
+
+  /* Steel gradient used for the hero coupler render */
+  --steel-1: #d9dee3;
+  --steel-2: #aab2bb;
+  --steel-3: #c3cad2;
+  --steel-4: #8f979f;
+  --bar-1: #c8ced5;
+  --bar-2: #9aa2ab;
+  --bar-3: #7d858e;
+
+  /* --- type ------------------------------------------------------------- */
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* --- breakpoints -------------------------------------------------------- */
+  /* Small phones (iPhone SE, 360px Androids) take a step down in display type
+     so long headlines don't run to four or five lines. */
+  --breakpoint-xs: 26rem;
+
+  /* --- elevation & motion ------------------------------------------------ */
+  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 6px 16px -8px rgb(16 24 40 / 0.12);
+  --shadow-card-lg: 0 2px 4px rgb(16 24 40 / 0.05), 0 18px 36px -12px rgb(16 24 40 / 0.18);
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-industrial: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================================================
+   Dark scope
+   Put `.on-dark` on any full-bleed band (or the admin shell) and everything
+   inside inverts — no per-component dark variants anywhere in the codebase.
+   ========================================================================= */
+.on-dark {
+  --color-base: #0b0c0e;
+  --color-surface: #16181c;
+  --color-surface-2: #16181c;
+  --color-surface-3: #1e2126;
+  --color-graphite: #b0b0b0;
+  --color-steel: #3f444b;
+  --color-line: #26282d;
+  --color-line-2: #33373d;
+
+  --color-heading: #ffffff;
+  --color-text: #ffffff;
+  --color-muted: #b0b0b0;
+  --color-muted-2: #7d8087;
+
+  --color-ok: #22c55e;
+  --color-warn: #f59e0b;
+
+  --ill-deep: #0b0c0e;
+  --ill-fill: #16181c;
+  --ill-fill-2: #1e2126;
+  --ill-mid: #33373d;
+  --ill-grid: #26282d;
+  --ill-stroke: #7d8087;
+  --ill-label: #b0b0b0;
+  --ill-bright: #ffffff;
+  --ill-warn: #3f2020;
+
+  --steel-1: #4a5058;
+  --steel-2: #22262b;
+  --steel-3: #33383f;
+  --steel-4: #101216;
+  --bar-1: #2b2f35;
+  --bar-2: #15171b;
+  --bar-3: #0a0b0d;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 6px 16px -8px rgb(0 0 0 / 0.6);
+  --shadow-card-lg: 0 2px 4px rgb(0 0 0 / 0.5), 0 18px 36px -12px rgb(0 0 0 / 0.7);
+
+  background: var(--color-base);
+  color: var(--color-muted);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+    min-width: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* header is 76px tall and fixed — keep anchor targets clear of it */
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+    /* Decorative bleed (hero glow, marquee) must never widen the document on
+       narrow screens. `clip` rather than `hidden` so position:sticky keeps
+       working — the Knowledge Center panel relies on it. */
+    overflow-x: clip;
+  }
+
+  body {
+    background: var(--color-base);
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-heading);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-red);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-red);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-2);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-red);
+  }
+}
+
+@layer components {
+  /* ---------------------------------------------------------------------
+     Layout
+     --------------------------------------------------------------------- */
+  .container-x {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Eyebrow — the mono red overline above every section heading
+     --------------------------------------------------------------------- */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-red);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+    flex: none;
+  }
+
+  /* ---------------------------------------------------------------------
+     Buttons
+     --------------------------------------------------------------------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      background-color 0.25s var(--ease-out-soft),
+      border-color 0.25s var(--ease-out-soft),
+      color 0.25s var(--ease-out-soft),
+      transform 0.25s var(--ease-out-soft),
+      box-shadow 0.25s var(--ease-out-soft);
+  }
+  .btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-primary {
+    background: var(--color-red);
+    color: #fff;
+    border: 1px solid var(--color-red);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--color-red-bright);
+    border-color: var(--color-red-bright);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px -10px rgb(212 16 0 / 0.65);
+  }
+
+  /* Secondary: outlined in the heading colour, so it works on white and on
+     the dark bands without a variant. */
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-heading);
+    border: 1px solid var(--color-line-2);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    border-color: var(--color-red);
+    color: var(--color-red);
+    background: rgb(212 16 0 / 0.06);
+    transform: translateY(-2px);
+  }
+
+  /* Solid black — the third emphasis level, used sparingly on white */
+  .btn-dark {
+    background: var(--color-deep);
+    color: #fff;
+    border: 1px solid var(--color-deep);
+  }
+  .btn-dark:hover:not(:disabled) {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px -12px rgb(0 0 0 / 0.5);
+  }
+
+  .btn-sm {
+    padding: 0.625rem 1.125rem;
+    font-size: 0.75rem;
+  }
+
+  /* ---------------------------------------------------------------------
+     Panel — the card used for every content block
+     --------------------------------------------------------------------- */
+  .panel {
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Hover-lift card with a red top-edge wipe */
+  .panel-hover {
+    position: relative;
+    overflow: hidden;
+    transition:
+      border-color 0.35s var(--ease-out-soft),
+      box-shadow 0.35s var(--ease-out-soft),
+      transform 0.35s var(--ease-out-soft);
+  }
+  .panel-hover::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 2px;
+    background: var(--color-red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s var(--ease-industrial);
+  }
+  .panel-hover:hover {
+    border-color: var(--color-line-2);
+    box-shadow: var(--shadow-card-lg);
+    transform: translateY(-4px);
+  }
+  .panel-hover:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------------------------------------------------------------------
+     Technical data — mono, for specs, batch numbers, heat numbers
+     --------------------------------------------------------------------- */
+  .data {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------------------------------------------------------------------
+     Hairline grid backdrop — the engineering-drawing texture behind
+     hero and feature bands.
+     --------------------------------------------------------------------- */
+  .grid-bg {
+    background-image:
+      linear-gradient(var(--color-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: center;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 40%, #000 20%, transparent 75%);
+  }
+
+  /* Diagonal hazard stripes — used only on the CTA band edge */
+  .hazard {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--color-red) 0 8px,
+      transparent 8px 18px
+    );
+  }
+}
+
+@layer utilities {
+  /* Infinite ticker used by the certification marquee */
+  .animate-marquee {
+    animation: marquee 38s linear infinite;
+  }
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Slow pulse for the "live" traceability dot */
+  .animate-ping-slow {
+    animation: ping-slow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  @keyframes ping-slow {
+    75%,
+    100% {
+      transform: scale(2.4);
+      opacity: 0;
+    }
+  }
+}
+
+/* Safety net: entry animations set inline opacity:0 and rely on JS to raise it.
+   If scripting is unavailable the content must still be readable, so force
+   everything visible rather than leaving a blank page. */
+@media (scripting: none) {
+  [style*="opacity"] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Respect the OS reduced-motion setting everywhere, including the
+   decorative CSS animations above. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
