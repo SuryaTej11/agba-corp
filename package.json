@@ -40,5 +40,8 @@
     "better-sqlite3@12.11.1": true,
     "sharp@0.34.5": true,
     "unrs-resolver@1.12.2": true
+  },
+  "engines": {
+    "node": ">=20.9.0"
   }
 }

@@ -128,16 +128,28 @@ the `<svg>` bodies in that one file for an `<Image>`; nothing else references th
 
 ## Deploying
 
-1. `npm ci && npm run build`
-2. Set `ADMIN_PASSWORD_HASH`, `ADMIN_SESSION_SECRET` and `NEXT_PUBLIC_SITE_URL` in the
-   host's environment.
-3. `npm start` behind nginx/Caddy.
-4. **Back up `data/`** — it holds the database and every uploaded file. Nothing else on
-   the server carries state.
+Target is a **GoDaddy VPS**. Full walkthrough in **[DEPLOY.md](DEPLOY.md)** —
+server setup, nginx, TLS, DNS, backups and the launch checklist.
 
-Serverless hosts (Vercel, Netlify) will not work as-is: their filesystem is ephemeral, so
-uploads and the database would vanish between deploys. Use a VPS, or move `data/` to S3 +
-Postgres.
+Short version:
+
+```bash
+npm ci && npm run build
+pm2 start ecosystem.config.cjs      # or deploy/agba.service for systemd
+sudo cp deploy/nginx.conf /etc/nginx/sites-available/agbacorp.com
+sudo certbot --nginx -d agbacorp.com -d www.agbacorp.com
+```
+
+Updates afterwards are one command: `./deploy/deploy.sh` — it backs up `data/`,
+pulls, rebuilds, restarts and waits for the site to answer before reporting
+success.
+
+**Back up `data/`.** It holds the database and every uploaded file, and it is
+the only state on the server. `npm run backup` takes a consistent snapshot even
+while the site is live; put it on a nightly cron.
+
+Serverless hosts (Vercel, Netlify) will not work as-is: their filesystem is
+ephemeral, so uploads and the database would vanish between deploys.
 
 ## Still outstanding
 

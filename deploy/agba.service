@@ -1,0 +1,33 @@
+# systemd unit — an alternative to PM2. Use one or the other, not both.
+#
+#   sudo cp deploy/agba.service /etc/systemd/system/agba.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now agba
+#   sudo systemctl status agba
+#   journalctl -u agba -f
+#
+# Adjust User and WorkingDirectory to match the server.
+
+[Unit]
+Description=AGBA Corporation website
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/agba-corp
+Environment=NODE_ENV=production
+Environment=PORT=3009
+EnvironmentFile=/var/www/agba-corp/.env.local
+ExecStart=/usr/bin/npm start
+Restart=always
+RestartSec=5
+
+# The app only ever writes inside data/ — everything else can stay read-only.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/var/www/agba-corp/data /var/www/agba-corp/logs
+
+[Install]
+WantedBy=multi-user.target
