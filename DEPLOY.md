@@ -1,7 +1,20 @@
 # Deploying agbacorp.com
 
-Target: **GoDaddy VPS** (confirmed). Everything below assumes root SSH on an
-Ubuntu 22.04+ server, with `agbacorp.com` managed at GoDaddy.
+## Where things actually stand (checked 2026-08-21)
+
+| | |
+|---|---|
+| Domain registrar | **BigRock** — expires **4 Dec 2026** |
+| Nameservers | **Hostinger** (`artemis` / `hermes.dns-parking.com`) |
+| Web host | **Hostinger shared hosting** — LiteSpeed, PHP 8.3, hPanel, IP `82.25.125.160` |
+| Current site | WordPress |
+
+**No part of this is on GoDaddy**, and **Hostinger shared hosting cannot run
+Node** — it serves PHP only. So the new site cannot go live on the server the
+domain points at today. A VPS is required. The steps below work on any VPS
+(Hostinger, GoDaddy, Hetzner, DigitalOcean); only the DNS step differs.
+
+Everything below assumes root SSH on an Ubuntu 22.04+ server.
 
 ## What you are deploying
 
@@ -99,7 +112,9 @@ certificate genuinely works, or you will pin visitors to a broken site.
 
 ## 6. Point the domain
 
-GoDaddy → **Domain → DNS → Manage Zones** for `agbacorp.com`:
+DNS is served by Hostinger's nameservers, so the records are edited in
+**Hostinger hPanel → Domains → DNS / Nameservers**, *not* at BigRock and not at
+GoDaddy:
 
 | Type | Name | Value |
 |---|---|---|
@@ -108,6 +123,9 @@ GoDaddy → **Domain → DNS → Manage Zones** for `agbacorp.com`:
 
 Leave `MX` and any other email records alone — moving the website does not move
 email. Propagation is usually minutes.
+
+> Do this **last**, only once the new site is confirmed working on the VPS. Until
+> you change the A record, WordPress stays live and nothing is at risk.
 
 ## 7. Nightly backups
 
