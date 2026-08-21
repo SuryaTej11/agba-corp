@@ -1,0 +1,46 @@
+# Render Blueprint for agbacorp.com
+#
+# Render → New → Blueprint → point it at this repo. It reads this file and
+# creates the service, the persistent disk and the environment variables in
+# one step, instead of you filling in a form.
+#
+# The disk is the important part: it is what makes SQLite and the uploaded
+# certificates survive a redeploy. Without it every deploy would wipe them,
+# which is why Vercel and Netlify are not options for this site.
+
+services:
+  - type: web
+    name: agba-corp
+    runtime: node
+    plan: starter # free tier has no persistent disk and sleeps when idle
+    region: singapore # closest Render region to India
+    branch: main
+
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+
+    healthCheckPath: /
+
+    # SQLite has a single writer — never scale this past one instance.
+    numInstances: 1
+
+    disk:
+      name: agba-data
+      mountPath: /var/data
+      sizeGB: 5 # ~thousands of PDF certificates; raise it later if needed
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Point the app at the mounted disk rather than ./data, which on Render
+      # is ephemeral and would be lost on every deploy.
+      - key: DATA_DIR
+        value: /var/data
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://agbacorp.com
+      # Set these in the Render dashboard, not here — they are secrets.
+      # Generate both with: npm run hash-password -- "your-password"
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: ADMIN_SESSION_SECRET
+        sync: false

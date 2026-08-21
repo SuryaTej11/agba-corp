@@ -19,7 +19,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const dataDir = path.join(root, "data");
+const dataDir = process.env.DATA_DIR?.trim() || path.join(root, "data");
 const dbPath = path.join(dataDir, "agba.db");
 const outDir = process.argv[2] || path.join(root, "backups");
 

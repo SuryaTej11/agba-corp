@@ -16,6 +16,24 @@ domain points at today. A VPS is required. The steps below work on any VPS
 
 Everything below assumes root SSH on an Ubuntu 22.04+ server.
 
+## Two ways to run it — pick one
+
+**Render (recommended for this project).** A managed platform: connect the git
+repo, it builds and deploys on every push, HTTPS is automatic, and there is no
+server to patch or secure. `render.yaml` in this repo is a Blueprint — Render
+reads it and creates everything in one step. **The persistent disk is what makes
+this work**; it is where SQLite and the uploaded certificates live, and it
+survives redeploys. Roughly $7/month plus a few cents for the disk.
+
+**A VPS.** More control and marginally cheaper, but you own the operating
+system: nginx, TLS renewal, security updates, process supervision. Full steps
+are further down.
+
+Both run the identical codebase. The only difference is `DATA_DIR` — unset on a
+VPS (defaults to `./data`), set to the mount path on Render.
+
+---
+
 ## What you are deploying
 
 A **Node application**, not static HTML. It runs a server on every request —
@@ -193,12 +211,34 @@ before the public launch.** The Downloads library is already empty and shows a
 
 ---
 
-## If the hosting ever changes
+## Deploying on Render
 
-This site needs a persistent filesystem. **Vercel and Netlify will not work
-as-is** — their filesystems are ephemeral, so the database and every uploaded
-certificate would vanish on the next deploy. Moving to them means swapping
-SQLite for Postgres and `data/uploads` for S3: a real migration, not a setting.
+1. Push this repo to GitHub.
+2. Render → **New → Blueprint** → select the repo. It reads `render.yaml`.
+3. Before the first deploy, set the two secrets in the Render dashboard —
+   generate them locally with `npm run hash-password -- "your-password"`:
+   - `ADMIN_PASSWORD_HASH`
+   - `ADMIN_SESSION_SECRET`
+4. Deploy. The site comes up on `agba-corp.onrender.com`.
+5. Optionally seed sample content from Render's shell: `npm run seed`.
+6. Render → Settings → **Custom Domain** → add `agbacorp.com` and
+   `www.agbacorp.com`. Render shows the DNS records to create.
+7. Add those records in **Hostinger hPanel → Domains → DNS**. TLS is issued
+   automatically once they resolve.
 
-Any VPS works — Hetzner, DigitalOcean, Railway, Render. The domain can stay at
-GoDaddy regardless; only the `A` record changes.
+Updates after that are just `git push`.
+
+Two things to know about the disk: a service with a disk attached **cannot run
+more than one instance** (SQLite has a single writer anyway), and deploys take a
+few seconds of downtime rather than being zero-downtime. Neither matters for a
+site like this.
+
+## What will NOT work
+
+**Vercel and Netlify.** Their filesystems are ephemeral, so the database and
+every uploaded certificate would vanish on the next deploy. Using them would
+mean swapping SQLite for Postgres and `data/uploads` for S3 — a real migration,
+not a setting.
+
+**Any shared/cPanel hosting**, including the current Hostinger plan. PHP only,
+no Node runtime.

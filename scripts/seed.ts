@@ -17,7 +17,7 @@ import { SCHEMA } from "../lib/db/schema.ts";
 import { makePdf } from "./make-pdf.mjs";
 
 const ROOT = process.cwd();
-const DATA_DIR = path.join(ROOT, "data");
+const DATA_DIR = process.env.DATA_DIR?.trim() || path.join(ROOT, "data");
 const UPLOAD_DIR = path.join(DATA_DIR, "uploads");
 
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });

@@ -16,7 +16,13 @@ import { SCHEMA } from "./schema";
 // These are runtime data locations, not modules. The turbopackIgnore hints stop
 // the bundler tracing the whole project into the deploy manifest because it
 // sees a dynamic path.join.
-export const DATA_DIR = path.join(/* turbopackIgnore: true */ process.cwd(), "data");
+//
+// DATA_DIR defaults to ./data, which is what you want on a VPS. Platforms that
+// attach storage at a fixed mount point (Render, Fly, Railway) set DATA_DIR to
+// that path instead — everything below follows it, so nothing else changes.
+export const DATA_DIR =
+  process.env.DATA_DIR?.trim() ||
+  path.join(/* turbopackIgnore: true */ process.cwd(), "data");
 export const UPLOAD_DIR = path.join(/* turbopackIgnore: true */ DATA_DIR, "uploads");
 const DB_PATH = path.join(/* turbopackIgnore: true */ DATA_DIR, "agba.db");
 
