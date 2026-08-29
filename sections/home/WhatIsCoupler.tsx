@@ -1,4 +1,5 @@
 import { CouplerAnatomy } from "@/components/illustrations/CouplerAnatomy";
+import { DiagramFrame } from "@/components/illustrations/DiagramFrame";
 import { SpliceCompare } from "@/components/illustrations/SpliceCompare";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -22,9 +23,9 @@ export function WhatIsCoupler() {
         {/* annotated cutaway */}
         <Reveal delay={0.1} className="mt-14">
           <div className="panel overflow-hidden p-5 sm:p-8">
-            <div className="overflow-x-auto">
-              <CouplerAnatomy className="h-auto w-full min-w-[42rem]" />
-            </div>
+            <DiagramFrame minWidth={560} caption="Coupler cutaway">
+              <CouplerAnatomy className="h-auto w-full" />
+            </DiagramFrame>
           </div>
         </Reveal>
 
@@ -46,9 +47,9 @@ export function WhatIsCoupler() {
 
           <Reveal direction="left">
             <div className="panel p-5 sm:p-7">
-              <div className="overflow-x-auto">
-                <SpliceCompare className="h-auto w-full min-w-[32rem]" />
-              </div>
+              <DiagramFrame minWidth={440} caption="Lap splice vs mechanical splice">
+                <SpliceCompare className="h-auto w-full" />
+              </DiagramFrame>
               <p className="mt-5 border-t border-line pt-4 text-xs leading-relaxed text-muted-2">
                 {WHAT_IS.spliceCaption}
               </p>

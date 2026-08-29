@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, fadeIn, growIn } from "./motion";
 
 /**
  * "Slimmer Wall, Stronger Outcome" — cross-section comparison.
@@ -26,18 +27,13 @@ export function WallSection({
   const rOuter = agba ? 50 : 57;
   const accent = agba ? "var(--color-red)" : "var(--ill-stroke)";
 
-  const grow = {
-    initial: { scale: 0.82, opacity: 0 },
-    whileInView: { scale: 1, opacity: 1 },
-    viewport: { once: true, margin: "-15%" },
-    transition: reduce
-      ? { duration: 0 }
-      : { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
-  };
+  // Variants driven by the root <motion.svg> — see ./motion.ts.
+  const grow = { variants: growIn(0, !!reduce) };
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 300 300"
+      {...diagramRoot}
       className={className}
       role="img"
       aria-label={
@@ -70,7 +66,7 @@ export function WallSection({
 
       {/* concrete aggregate trying to pass — sparse when there is room,
           jammed against the body when there is not */}
-      <g fill="var(--ill-mid)">
+      <motion.g fill="var(--ill-mid)">
         {[
           [cx, cy - 68],
           [cx + 48, cy - 48],
@@ -87,13 +83,10 @@ export function WallSection({
             cy={y}
             r={agba ? 7 : 9}
             fill={agba ? "var(--ill-mid)" : "var(--ill-warn)"}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={reduce ? { duration: 0 } : { delay: 0.5 + i * 0.05 }}
+            variants={fadeIn(0.5 + i * 0.05, !!reduce)}
           />
         ))}
-      </g>
+      </motion.g>
 
       <motion.g {...grow} style={{ transformOrigin: `${cx}px ${cy}px` }}>
         {/* coupler body wall */}
@@ -176,6 +169,6 @@ export function WallSection({
       >
         ON A Ø32 BAR
       </text>
-    </svg>
+    </motion.svg>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, drawIn, fadeIn } from "./motion";
 
 /**
  * "What is a Coupler?" — annotated cutaway of a completed splice.
@@ -12,31 +13,21 @@ import { motion, useReducedMotion } from "framer-motion";
 export function CouplerAnatomy({ className }: { className?: string }) {
   const reduce = useReducedMotion();
 
-  const draw = (delay: number) => ({
-    initial: { pathLength: 0, opacity: 0 },
-    whileInView: { pathLength: 1, opacity: 1 },
-    viewport: { once: true, margin: "-15%" },
-    transition: reduce
-      ? { duration: 0 }
-      : { duration: 1.1, delay, ease: [0.16, 1, 0.3, 1] as const },
-  });
-
-  const fade = (delay: number) => ({
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true, margin: "-15%" },
-    transition: reduce ? { duration: 0 } : { duration: 0.5, delay },
-  });
+  // Variants, driven by the root <motion.svg> — see ./motion.ts for why this
+  // must not be a per-element whileInView.
+  const draw = (delay: number) => ({ variants: drawIn(delay, !!reduce) });
+  const fade = (delay: number) => ({ variants: fadeIn(delay, !!reduce) });
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 760 340"
       className={className}
       role="img"
+      {...diagramRoot}
       aria-label="Cutaway of a parallel-thread rebar coupler: two cold-upset, threaded bar ends meeting inside the coupler body, with the engagement length and wall thickness marked."
     >
       {/* ---- ribbed rebar, left ------------------------------------------ */}
-      <g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
+      <motion.g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
         <rect x="20" y="150" width="150" height="40" rx="2" />
         {Array.from({ length: 9 }).map((_, i) => (
           <motion.path
@@ -45,7 +36,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
             {...draw(0.02 * i)}
           />
         ))}
-      </g>
+      </motion.g>
 
       {/* ---- cold-upset transition, left --------------------------------- */}
       <motion.path
@@ -88,7 +79,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
            together, so the drawing shows a splice that is actually made up
            rather than two halves waiting to be joined. */}
       {[206, 380].map((x0, side) => (
-        <g key={x0} stroke="var(--ill-bright)" strokeWidth="1.4" fill="none" opacity="0.9">
+        <motion.g key={x0} stroke="var(--ill-bright)" strokeWidth="1.4" fill="none" opacity="0.9">
           <rect x={x0} y="137" width="174" height="66" fill="var(--ill-deep)" />
           {Array.from({ length: 14 }).map((_, i) => (
             <motion.path
@@ -97,7 +88,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
               {...draw(0.35 + 0.02 * i)}
             />
           ))}
-        </g>
+        </motion.g>
       ))}
 
       {/* centre joint line — drawn over the threads, marking where the two
@@ -120,7 +111,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       />
 
       {/* ---- ribbed rebar, right ----------------------------------------- */}
-      <g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
+      <motion.g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
         <rect x="590" y="150" width="150" height="40" rx="2" />
         {Array.from({ length: 9 }).map((_, i) => (
           <motion.path
@@ -129,7 +120,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
             {...draw(0.02 * i)}
           />
         ))}
-      </g>
+      </motion.g>
 
       {/* ---- annotations -------------------------------------------------- */}
       <motion.g {...fade(0.9)}>
@@ -208,6 +199,6 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           <stop offset="100%" stopColor="var(--ill-fill)" />
         </linearGradient>
       </defs>
-    </svg>
+    </motion.svg>
   );
 }

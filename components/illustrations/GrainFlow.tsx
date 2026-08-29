@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, drawIn } from "./motion";
 
 /**
  * "Forged Before Threaded" — the grain-flow comparison.
@@ -21,18 +22,13 @@ export function GrainFlow({
   const machined = variant === "machined";
   const accent = machined ? "var(--color-red)" : "var(--color-ok)";
 
-  const anim = (delay: number) => ({
-    initial: { pathLength: 0, opacity: 0 },
-    whileInView: { pathLength: 1, opacity: 1 },
-    viewport: { once: true, margin: "-15%" },
-    transition: reduce
-      ? { duration: 0 }
-      : { duration: 0.9, delay, ease: [0.16, 1, 0.3, 1] as const },
-  });
+  // Variants driven by the root <motion.svg> — see ./motion.ts.
+  const anim = (delay: number) => ({ variants: drawIn(delay, !!reduce) });
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 420 220"
+      {...diagramRoot}
       className={className}
       role="img"
       aria-label={
@@ -75,7 +71,7 @@ export function GrainFlow({
       />
 
       {/* thread teeth */}
-      <g stroke="var(--ill-label)" strokeWidth="1.4" fill="none">
+      <motion.g stroke="var(--ill-label)" strokeWidth="1.4" fill="none">
         {Array.from({ length: machined ? 13 : 11 }).map((_, i) =>
           machined ? (
             <motion.path
@@ -91,10 +87,10 @@ export function GrainFlow({
             />
           ),
         )}
-      </g>
+      </motion.g>
 
       {/* --- grain lines: the whole point of the diagram --- */}
-      <g fill="none" strokeWidth="1.2">
+      <motion.g fill="none" strokeWidth="1.2">
         {Array.from({ length: 7 }).map((_, i) => {
           const y = 84 + i * 9;
           return machined ? (
@@ -118,7 +114,7 @@ export function GrainFlow({
             />
           );
         })}
-      </g>
+      </motion.g>
 
       {/* section callout */}
       <g stroke={accent} strokeWidth="1" strokeDasharray="3 3">
@@ -146,6 +142,6 @@ export function GrainFlow({
       >
         {machined ? "GRAIN SEVERED AT EVERY ROOT" : "GRAIN FLOWS THROUGH THE THREAD"}
       </text>
-    </svg>
+    </motion.svg>
   );
 }

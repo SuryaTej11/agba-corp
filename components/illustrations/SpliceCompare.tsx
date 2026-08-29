@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, fadeIn, slideIn } from "./motion";
 
 /**
  * Lap splice vs mechanical splice — used inside "What is a Coupler?".
@@ -12,13 +13,9 @@ import { motion, useReducedMotion } from "framer-motion";
 export function SpliceCompare({ className }: { className?: string }) {
   const reduce = useReducedMotion();
 
+  // Variants driven by the root <motion.svg> — see ./motion.ts.
   const slide = (delay: number, from: number) => ({
-    initial: { opacity: 0, x: from },
-    whileInView: { opacity: 1, x: 0 },
-    viewport: { once: true, margin: "-15%" },
-    transition: reduce
-      ? { duration: 0 }
-      : { duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] as const },
+    variants: slideIn(from, delay, !!reduce),
   });
 
   const rib = (x: number, y: number, n: number, w = 14) =>
@@ -32,10 +29,11 @@ export function SpliceCompare({ className }: { className?: string }) {
     ));
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 620 300"
       className={className}
       role="img"
+      {...diagramRoot}
       aria-label="A lap splice needs a long overlap of two bars carrying load through the concrete, while a mechanical splice transfers load through the coupler body over a short fixed length."
     >
       {/* ================= LAP SPLICE ================= */}
@@ -107,10 +105,7 @@ export function SpliceCompare({ className }: { className?: string }) {
 
       {/* coupler body */}
       <motion.g
-        initial={{ opacity: 0, scale: 0.7 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-15%" }}
-        transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.5 }}
+        variants={fadeIn(0.5, !!reduce)}
         style={{ transformOrigin: "310px 227px" }}
       >
         <rect
@@ -156,6 +151,6 @@ export function SpliceCompare({ className }: { className?: string }) {
           <stop offset="100%" stopColor="var(--ill-fill)" />
         </linearGradient>
       </defs>
-    </svg>
+    </motion.svg>
   );
 }

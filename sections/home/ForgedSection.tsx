@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import { DiagramFrame } from "@/components/illustrations/DiagramFrame";
 import { GrainFlow } from "@/components/illustrations/GrainFlow";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -56,12 +57,9 @@ export function ForgedSection() {
                     </h3>
                   </div>
 
-                  <div className="mt-6 overflow-x-auto">
-                    <GrainFlow
-                      variant={c.variant}
-                      className="h-auto w-full min-w-[24rem]"
-                    />
-                  </div>
+                  <DiagramFrame minWidth={340} className="mt-6" caption={c.title}>
+                    <GrainFlow variant={c.variant} className="h-auto w-full" />
+                  </DiagramFrame>
 
                   <p className="mt-6 border-t border-line pt-5 text-sm leading-relaxed text-muted">
                     {c.body}

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, drawIn, fadeIn } from "./motion";
 
 /**
  * Traceability chain for the Find Your Coupler hero: steel heat → forged and
@@ -19,8 +20,9 @@ export function TraceChain({ className }: { className?: string }) {
   ];
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 900 170"
+      {...diagramRoot}
       className={className}
       role="img"
       aria-label="Traceability chain: the steel heat number carries through forging and threading to the batch number stamped on the coupler, and on to the signed NABL certificate issued for that batch."
@@ -34,10 +36,7 @@ export function TraceChain({ className }: { className?: string }) {
         y2="70"
         stroke="var(--color-red)"
         strokeWidth="2"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true, margin: "-15%" }}
-        transition={reduce ? { duration: 0 } : { duration: 1.6, ease: "easeInOut" }}
+        variants={drawIn(0, !!reduce)}
       />
 
       {/* travelling pulse */}
@@ -47,8 +46,7 @@ export function TraceChain({ className }: { className?: string }) {
           fill="#f5240f"
           cy="70"
           initial={{ cx: 70, opacity: 0 }}
-          whileInView={{ cx: [70, 830], opacity: [0, 1, 1, 0] }}
-          viewport={{ once: true }}
+          animate={{ cx: [70, 830], opacity: [0, 1, 1, 0] }}
           transition={{
             duration: 2.6,
             delay: 1.2,
@@ -64,14 +62,7 @@ export function TraceChain({ className }: { className?: string }) {
         return (
           <motion.g
             key={n.label}
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-15%" }}
-            transition={
-              reduce
-                ? { duration: 0 }
-                : { duration: 0.5, delay: 0.35 * i, ease: [0.16, 1, 0.3, 1] }
-            }
+            variants={fadeIn(0.35 * i, !!reduce)}
           >
             <circle cx={x} cy="70" r="17" fill="var(--ill-deep)" stroke="var(--color-red)" strokeWidth="2" />
             <text
@@ -109,6 +100,6 @@ export function TraceChain({ className }: { className?: string }) {
           </motion.g>
         );
       })}
-    </svg>
+    </motion.svg>
   );
 }

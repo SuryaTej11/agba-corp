@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import { diagramRoot, drawIn } from "./motion";
 
 /**
  * Knowledge Center — parallel thread form to IS 16172:2023 Annex G, with the
@@ -17,8 +18,9 @@ export function ThreadProfile({ className }: { className?: string }) {
   }).join(" ");
 
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 600 230"
+      {...diagramRoot}
       className={className}
       role="img"
       aria-label="Parallel thread profile to IS 16172:2023 Annex G, with pitch, flank angle and thread depth dimensioned."
@@ -33,10 +35,7 @@ export function ThreadProfile({ className }: { className?: string }) {
         stroke="var(--color-red)"
         strokeWidth="2"
         strokeLinejoin="round"
-        initial={{ pathLength: 0 }}
-        whileInView={{ pathLength: 1 }}
-        viewport={{ once: true, margin: "-15%" }}
-        transition={reduce ? { duration: 0 } : { duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+        variants={drawIn(0, !!reduce)}
       />
 
       {/* crest line — parallel, not tapered. That is the whole point. */}
@@ -101,6 +100,6 @@ export function ThreadProfile({ className }: { className?: string }) {
         FLANK ANGLE
       </text>
       <path d="M206 72 L214 128" stroke="var(--color-ok)" strokeWidth="1" strokeDasharray="3 3" />
-    </svg>
+    </motion.svg>
   );
 }

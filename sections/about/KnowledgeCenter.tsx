@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Download } from "lucide-react";
+import { DiagramFrame } from "@/components/illustrations/DiagramFrame";
 import { ThreadProfile } from "@/components/illustrations/ThreadProfile";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -177,9 +178,9 @@ export function KnowledgeCenter() {
               <span className="data text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
                 IS 16172:2023 · Annex G
               </span>
-              <div className="mt-4 overflow-x-auto">
-                <ThreadProfile className="h-auto w-full min-w-[20rem]" />
-              </div>
+              <DiagramFrame minWidth={300} className="mt-4" caption="Thread profile">
+                <ThreadProfile className="h-auto w-full" />
+              </DiagramFrame>
               <p className="mt-4 border-t border-line pt-4 text-xs leading-relaxed text-muted-2">
                 The parallel thread form. Pitch, flank angle and depth are all
                 gauge-verified on every coupler — not measured by sample.
