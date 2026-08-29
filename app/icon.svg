@@ -1,7 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
-  <rect width="40" height="40" rx="6" fill="#000000"/>
-  <g fill="none" stroke="#d41000" stroke-linejoin="round">
-    <path d="M20 6.5 35 32H5L20 6.5Z" stroke-width="2.6"/>
-    <path d="M20 16.5 27.5 29.5h-15L20 16.5Z" stroke-width="2" opacity="0.5"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="326.3 114.7 111.2 111.2">
+  <!-- AGBA mark, from the supplied brandmark artwork. -->
+  <rect x="326.3" y="114.7" width="111.2" height="111.2" rx="14" fill="#ffffff"/>
+  <path d="M381.89,159.98l-22.5,38c6.01.52,11.25.2,16.69.13l5.71-.06,8.15,14.35-57.64.04,49.47-84.36,49.75,84.28-18.56.1-16.67-28.3-14.4-24.18ZM351.46,202.22l30.46-51.66,34.02,57.59,7.5-.16-41.67-70.54-41.5,70.7,41.73.06-3.27-5.83-27.29-.15Z" fill="#4e4e4f"/>
+  <path d="M395.9,212.67l-7.75-12.36-5.93-10.28,5.87-.49s14.33,22.7,14.13,23.09l-6.32.05Z" fill="#de1f26"/>
 </svg>

@@ -126,7 +126,7 @@ export function BatchForm({
                   name="documents"
                   value={d.id}
                   defaultChecked={relatedIds.includes(d.id)}
-                  className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[#d41000]"
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 accent-[var(--color-red)]"
                 />
                 <span>
                   <span className="block text-heading">{d.title}</span>

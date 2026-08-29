@@ -60,14 +60,14 @@ export function SpliceCompare({ className }: { className?: string }) {
       </motion.g>
 
       {/* overlap dimension */}
-      <g stroke="#d41000" strokeWidth="1.2">
+      <g stroke="var(--color-red)" strokeWidth="1.2">
         <path d="M180 116 h150" />
         <path d="M180 110 v12 M330 110 v12" />
       </g>
       <text
         x="255"
         y="136"
-        fill="#d41000"
+        fill="var(--color-red)"
         fontSize="11"
         textAnchor="middle"
         fontFamily="var(--font-jetbrains-mono), monospace"
@@ -88,7 +88,7 @@ export function SpliceCompare({ className }: { className?: string }) {
       <text
         x="0"
         y="192"
-        fill="#d41000"
+        fill="var(--color-red)"
         fontSize="11"
         fontFamily="var(--font-jetbrains-mono), monospace"
         letterSpacing="0.12em"
@@ -120,7 +120,7 @@ export function SpliceCompare({ className }: { className?: string }) {
           height="46"
           rx="2"
           fill="url(#coupler-g)"
-          stroke="#d41000"
+          stroke="var(--color-red)"
           strokeWidth="2"
         />
         {Array.from({ length: 9 }).map((_, i) => (

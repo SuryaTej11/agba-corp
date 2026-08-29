@@ -24,7 +24,7 @@ export function WallSection({
   const cy = 150;
   const rBar = 30;
   const rOuter = agba ? 50 : 57;
-  const accent = agba ? "#d41000" : "var(--ill-stroke)";
+  const accent = agba ? "var(--color-red)" : "var(--ill-stroke)";
 
   const grow = {
     initial: { scale: 0.82, opacity: 0 },

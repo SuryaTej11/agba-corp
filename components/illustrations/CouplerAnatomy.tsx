@@ -51,7 +51,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       <motion.path
         d="M170 150 q16 -6 26 -13 h10 v106 h-10 q-10 -7 -26 -13 Z"
         fill="var(--ill-fill)"
-        stroke="#d41000"
+        stroke="var(--color-red)"
         strokeWidth="2"
         {...draw(0.25)}
       />
@@ -67,7 +67,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           height="116"
           rx="3"
           fill="url(#body)"
-          stroke="#d41000"
+          stroke="var(--color-red)"
           strokeWidth="2"
         />
         {/* wall hatching, top and bottom — the 7.5 mm section */}
@@ -81,20 +81,16 @@ export function CouplerAnatomy({ className }: { className?: string }) {
             strokeWidth="1"
           />
         ))}
-        {/* centre joint line — where the two bar ends meet */}
-        <path
-          d="M380 112 v116"
-          stroke="var(--ill-stroke)"
-          strokeWidth="1"
-          strokeDasharray="4 5"
-        />
       </motion.g>
 
-      {/* ---- parallel threads, both bar ends, inside the body ------------ */}
-      {[206, 422].map((x0, side) => (
+      {/* ---- parallel threads, both bar ends, inside the body ------------
+           The two threaded ends run all the way to the centre and butt
+           together, so the drawing shows a splice that is actually made up
+           rather than two halves waiting to be joined. */}
+      {[206, 380].map((x0, side) => (
         <g key={x0} stroke="var(--ill-bright)" strokeWidth="1.4" fill="none" opacity="0.9">
-          <rect x={x0} y="137" width="132" height="66" fill="var(--ill-deep)" />
-          {Array.from({ length: 11 }).map((_, i) => (
+          <rect x={x0} y="137" width="174" height="66" fill="var(--ill-deep)" />
+          {Array.from({ length: 14 }).map((_, i) => (
             <motion.path
               key={`th-${side}-${i}`}
               d={`M${x0 + 6 + i * 12} 137 l6 12 M${x0 + 6 + i * 12} 203 l6 -12`}
@@ -104,11 +100,21 @@ export function CouplerAnatomy({ className }: { className?: string }) {
         </g>
       ))}
 
+      {/* centre joint line — drawn over the threads, marking where the two
+          bar ends meet. This is what callout 03 points at. */}
+      <motion.path
+        d="M380 137 v66"
+        stroke="var(--color-red)"
+        strokeWidth="1.5"
+        strokeDasharray="4 5"
+        {...fade(0.75)}
+      />
+
       {/* ---- cold-upset transition, right -------------------------------- */}
       <motion.path
         d="M590 150 q-16 -6 -26 -13 h-10 v106 h10 q10 -7 26 -13 Z"
         fill="var(--ill-fill)"
-        stroke="#d41000"
+        stroke="var(--color-red)"
         strokeWidth="2"
         {...draw(0.25)}
       />
@@ -128,7 +134,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       {/* ---- annotations -------------------------------------------------- */}
       <motion.g {...fade(0.9)}>
         <g
-          stroke="#d41000"
+          stroke="var(--color-red)"
           strokeWidth="1"
           fill="none"
           strokeDasharray="3 3"
@@ -146,31 +152,31 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           fontFamily="var(--font-jetbrains-mono), monospace"
           letterSpacing="0.06em"
         >
-          <text x="18" y="86" fill="#d41000">
+          <text x="18" y="86" fill="var(--color-red)">
             01
           </text>
           <text x="40" y="86">
             COLD-UPSET BAR END
           </text>
-          <text x="150" y="73" fill="#d41000">
+          <text x="150" y="73" fill="var(--color-red)">
             02
           </text>
           <text x="172" y="73">
             PARALLEL THREAD
           </text>
-          <text x="238" y="296" fill="#d41000">
+          <text x="238" y="296" fill="var(--color-red)">
             03
           </text>
           <text x="260" y="296">
             BAR ENDS MEET
           </text>
-          <text x="618" y="266" fill="#d41000">
+          <text x="618" y="266" fill="var(--color-red)">
             04
           </text>
           <text x="640" y="266">
             7.5 mm WALL
           </text>
-          <text x="662" y="68" fill="#d41000">
+          <text x="662" y="68" fill="var(--color-red)">
             05
           </text>
           <text x="684" y="68">

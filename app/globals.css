@@ -7,8 +7,8 @@
    black and the brand red used as accent and for a handful of full-bleed
    dark bands (process timeline, CTA, footer).
 
-   The brand red #d41000 is carried over from the original site and matches
-   the red in the AGBA brandmark; #4a4a4a is the graphite from the mark.
+   The brand red and graphite are taken straight from the brandmark artwork
+   AGBA supplied, so the logo and the UI use exactly the same colours.
 
    Everything is driven by the tokens below. `.on-dark` (further down)
    re-points the same tokens at their dark values, so any component — panels,
@@ -25,15 +25,15 @@
   --color-surface-2: #ffffff;
   --color-surface-3: #eaedf1;
   --color-deep: #0b0c0e;
-  --color-graphite: #4a4a4a;
+  --color-graphite: #4e4e4f; /* the grey in the supplied brandmark */
   --color-steel: #6b7280;
   --color-line: #e2e6ea;
   --color-line-2: #cbd1d8;
 
   /* --- brand ------------------------------------------------------------ */
-  --color-red: #d41000;
-  --color-red-bright: #f5240f;
-  --color-red-dark: #a80d00;
+  --color-red: #de1f26; /* the red in the supplied brandmark */
+  --color-red-bright: #f0323a;
+  --color-red-dark: #b3161c;
 
   /* --- text -------------------------------------------------------------
      `heading` is the high-contrast colour for headings and emphasised copy;
@@ -97,7 +97,7 @@
   --color-surface: #16181c;
   --color-surface-2: #16181c;
   --color-surface-3: #1e2126;
-  --color-graphite: #b0b0b0;
+  --color-graphite: #b4b4b5; /* the grey in the dark brandmark variant */
   --color-steel: #3f444b;
   --color-line: #26282d;
   --color-line-2: #33373d;

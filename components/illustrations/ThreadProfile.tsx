@@ -30,7 +30,7 @@ export function ThreadProfile({ className }: { className?: string }) {
       <motion.path
         d={teeth}
         fill="none"
-        stroke="#d41000"
+        stroke="var(--color-red)"
         strokeWidth="2"
         strokeLinejoin="round"
         initial={{ pathLength: 0 }}

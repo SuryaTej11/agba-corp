@@ -32,7 +32,7 @@ export function TraceChain({ className }: { className?: string }) {
         y1="70"
         x2="830"
         y2="70"
-        stroke="#d41000"
+        stroke="var(--color-red)"
         strokeWidth="2"
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 1 }}
@@ -73,11 +73,11 @@ export function TraceChain({ className }: { className?: string }) {
                 : { duration: 0.5, delay: 0.35 * i, ease: [0.16, 1, 0.3, 1] }
             }
           >
-            <circle cx={x} cy="70" r="17" fill="var(--ill-deep)" stroke="#d41000" strokeWidth="2" />
+            <circle cx={x} cy="70" r="17" fill="var(--ill-deep)" stroke="var(--color-red)" strokeWidth="2" />
             <text
               x={x}
               y="76"
-              fill="#d41000"
+              fill="var(--color-red)"
               fontSize="13"
               textAnchor="middle"
               fontFamily="var(--font-jetbrains-mono), monospace"

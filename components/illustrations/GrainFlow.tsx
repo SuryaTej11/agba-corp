@@ -19,7 +19,7 @@ export function GrainFlow({
 }) {
   const reduce = useReducedMotion();
   const machined = variant === "machined";
-  const accent = machined ? "#d41000" : "var(--color-ok)";
+  const accent = machined ? "var(--color-red)" : "var(--color-ok)";
 
   const anim = (delay: number) => ({
     initial: { pathLength: 0, opacity: 0 },
@@ -102,7 +102,7 @@ export function GrainFlow({
             <motion.path
               key={i}
               d={`M16 ${y} H150 M${152} ${y} H${360}`}
-              stroke="#d41000"
+              stroke="var(--color-red)"
               strokeDasharray="9 7"
               opacity={0.75}
               {...anim(0.45 + i * 0.05)}
