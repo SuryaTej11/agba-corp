@@ -17,6 +17,8 @@ services:
     branch: main
 
     buildCommand: npm ci && npm run build
+    # `npm start` binds to $PORT, which Render sets and then health-checks.
+    # Hardcoding a port here makes the deploy hang on "scanning for open port".
     startCommand: npm start
 
     healthCheckPath: /
