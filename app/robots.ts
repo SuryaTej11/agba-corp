@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
-import { SITE } from "@/lib/site";
+import { siteUrl } from "@/lib/site";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? SITE.url;
+// Resolved per request — see app/sitemap.ts.
+export const dynamic = "force-dynamic";
 
 export default function robots(): MetadataRoute.Robots {
+  const base = siteUrl();
   return {
     rules: {
       userAgent: "*",

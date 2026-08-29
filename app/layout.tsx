@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, JetBrains_Mono, Space_Grotesk } from "next/font/google";
-import { SITE } from "@/lib/site";
+import { SITE, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 /**
@@ -35,7 +35,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? SITE.url),
+  metadataBase: new URL(siteUrl()),
   title: {
     default:
       "AGBA Corporation | IS 16172:2023 Parallel-Thread Rebar Couplers, Nagpur",

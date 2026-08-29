@@ -77,6 +77,26 @@ export const CONTACT = {
   hours: "Mon – Sat · 9:30 AM – 6:30 PM IST",
 } as const;
 
+/**
+ * The public origin, resolved at runtime.
+ *
+ * Order matters:
+ *   1. NEXT_PUBLIC_SITE_URL — set this on the real domain, it always wins.
+ *   2. RENDER_EXTERNAL_URL  — Render injects this automatically, so a preview
+ *      deploy gets correct canonical URLs, sitemap and robots with no config.
+ *   3. SITE.url             — the production domain, as a last resort.
+ *
+ * Any trailing slash is stripped, because everything downstream concatenates
+ * paths onto this and `https://host//about-us` is a different URL to crawlers.
+ */
+export function siteUrl(): string {
+  const raw =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    process.env.RENDER_EXTERNAL_URL?.trim() ||
+    SITE.url;
+  return raw.replace(/\/+$/, "");
+}
+
 /** Convenience helpers so components never hand-build these URLs. */
 export const waLink = (message: string = CONTACT.whatsapp.prefill) =>
   `https://wa.me/${CONTACT.whatsapp.number}?text=${encodeURIComponent(message)}`;

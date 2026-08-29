@@ -38,8 +38,10 @@ services:
       # is ephemeral and would be lost on every deploy.
       - key: DATA_DIR
         value: /var/data
-      - key: NEXT_PUBLIC_SITE_URL
-        value: https://agbacorp.com
+      # Left unset on purpose. The app falls back to RENDER_EXTERNAL_URL, which
+      # Render injects, so the preview deploy gets its own correct canonical
+      # URLs, sitemap and robots. Set this only once the real domain is live:
+      #   NEXT_PUBLIC_SITE_URL=https://agbacorp.com
       # Set these in the Render dashboard, not here — they are secrets.
       # Generate both with: npm run hash-password -- "your-password"
       - key: ADMIN_PASSWORD_HASH

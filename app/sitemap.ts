@@ -1,10 +1,16 @@
 import type { MetadataRoute } from "next";
-import { ROUTES, SITE } from "@/lib/site";
+import { ROUTES, siteUrl } from "@/lib/site";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? SITE.url;
+/**
+ * Four public pages. /admin is deliberately absent.
+ *
+ * Resolved per request so a preview deploy advertises its own host rather than
+ * whatever origin happened to be set at build time.
+ */
+export const dynamic = "force-dynamic";
 
-/** Four public pages. /admin is deliberately absent. */
 export default function sitemap(): MetadataRoute.Sitemap {
+  const base = siteUrl();
   const now = new Date();
   return [
     { url: `${base}${ROUTES.home}`, lastModified: now, priority: 1, changeFrequency: "monthly" },
