@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start -p ${PORT:-3009}",
+    "start": "next start",
     "lint": "eslint",
     "seed": "node scripts/seed.ts",
     "hash-password": "node scripts/hash-password.mjs",

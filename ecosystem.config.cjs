@@ -13,7 +13,7 @@ module.exports = {
     {
       name: "agba",
       script: "node_modules/next/dist/bin/next",
-      args: "start -p 3009",
+      args: "start",
       cwd: __dirname,
       instances: 1,
       // SQLite is a single writer — do NOT switch this to cluster mode, or
