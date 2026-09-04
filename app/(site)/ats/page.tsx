@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { ArrowRight, Wrench } from "lucide-react";
-import { CouplerAnatomy } from "@/components/illustrations/CouplerAnatomy";
-import { DiagramFrame } from "@/components/illustrations/DiagramFrame";
+import Image from "next/image";
 import { ProcessChain } from "@/components/illustrations/ProcessChain";
+import connectionInPlace from "@/public/images/connection-in-place.png";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -153,15 +153,22 @@ export default function AtsPage() {
             </p>
           </Reveal>
 
+          {/* The photograph is on a black ground, so the plate holding it is
+              scoped dark — otherwise it would sit as a black slab on a white
+              band. `.on-dark` also carries the caption and rule with it. */}
           <Reveal delay={0.15} className="mt-12">
-            <div className="panel p-5 sm:p-8">
-              <DiagramFrame minWidth={560} caption="The connection in place">
-                <CouplerAnatomy className="h-auto w-full" />
-              </DiagramFrame>
-              <p className="data mt-5 border-t border-line pt-4 text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
+            <figure className="on-dark panel overflow-hidden bg-deep">
+              <Image
+                src={connectionInPlace}
+                alt="An AGBA coupler joining two lengths of ribbed rebar, the AGBA mark debossed on the sleeve."
+                sizes="(min-width: 1280px) 1176px, 100vw"
+                placeholder="blur"
+                className="h-auto w-full"
+              />
+              <figcaption className="data border-t border-line px-6 py-4 text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
                 {thread.caption}
-              </p>
-            </div>
+              </figcaption>
+            </figure>
           </Reveal>
         </div>
       </Section>
