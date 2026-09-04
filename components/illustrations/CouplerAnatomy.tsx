@@ -9,6 +9,18 @@ import { diagramRoot, drawIn, fadeIn } from "./motion";
  * Two rebar ends, cold-upset and parallel-threaded, meeting inside the coupler
  * body. Callout leaders point at the four things that matter: the upset, the
  * thread, the engagement length and the wall.
+ *
+ * Drawn to true proportion for a 32 mm bar in the AGBA coupler, so the splice
+ * reads as one continuous member rather than a bar that balloons on entry:
+ *
+ *   coupler OD 53 mm → 116 units   (2.189 units/mm)
+ *   bore / threaded end 37.5 mm → 82
+ *   bar 32 mm → 70, drawn 68 so the upset step stays visible
+ *   wall 7.75 mm → 17 each side    (116 − 82) / 2 ✓
+ *
+ * Everything is symmetric about the y = 170 axis. If you change one height,
+ * recompute the rest from the table above — the wall must stay (OD − bore) / 2
+ * or the 7.75 mm callout stops being true.
  */
 export function CouplerAnatomy({ className }: { className?: string }) {
   const reduce = useReducedMotion();
@@ -24,15 +36,15 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       className={className}
       role="img"
       {...diagramRoot}
-      aria-label="Cutaway of a parallel-thread rebar coupler: two cold-upset, threaded bar ends meeting inside the coupler body, with the engagement length and wall thickness marked."
+      aria-label="Cutaway of a parallel-thread rebar coupler, drawn to scale for a 32 mm bar: two cold-upset, threaded bar ends meeting inside a 53 mm coupler body, with the engagement length and the 7.75 mm wall marked."
     >
       {/* ---- ribbed rebar, left ------------------------------------------ */}
       <motion.g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
-        <rect x="20" y="150" width="150" height="40" rx="2" />
-        {Array.from({ length: 9 }).map((_, i) => (
+        <rect x="20" y="136" width="150" height="68" rx="2" />
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.path
             key={`rib-l-${i}`}
-            d={`M${34 + i * 16} 150 l10 40`}
+            d={`M${26 + i * 18} 136 l14 68`}
             {...draw(0.02 * i)}
           />
         ))}
@@ -53,12 +65,12 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           strokeWidth="2"
         />
         {/* wall hatching, top and bottom — the 7.75 mm section */}
-        <rect x="196" y="112" width="368" height="25" fill="var(--ill-deep)" opacity="0.85" />
-        <rect x="196" y="203" width="368" height="25" fill="var(--ill-deep)" opacity="0.85" />
-        {Array.from({ length: 30 }).map((_, i) => (
+        <rect x="196" y="112" width="368" height="17" fill="var(--ill-deep)" opacity="0.85" />
+        <rect x="196" y="211" width="368" height="17" fill="var(--ill-deep)" opacity="0.85" />
+        {Array.from({ length: 31 }).map((_, i) => (
           <path
             key={`hatch-${i}`}
-            d={`M${200 + i * 12} 112 l12 25 M${200 + i * 12} 203 l12 25`}
+            d={`M${197 + i * 12} 112 l8 17 M${197 + i * 12} 211 l8 17`}
             stroke="var(--ill-mid)"
             strokeWidth="1"
           />
@@ -71,11 +83,11 @@ export function CouplerAnatomy({ className }: { className?: string }) {
            rather than two halves waiting to be joined. */}
       {[206, 380].map((x0, side) => (
         <motion.g key={x0} stroke="var(--ill-bright)" strokeWidth="1.4" fill="none" opacity="0.9">
-          <rect x={x0} y="137" width="174" height="66" fill="var(--ill-deep)" />
+          <rect x={x0} y="129" width="174" height="82" fill="var(--ill-deep)" />
           {Array.from({ length: 14 }).map((_, i) => (
             <motion.path
               key={`th-${side}-${i}`}
-              d={`M${x0 + 6 + i * 12} 137 l6 12 M${x0 + 6 + i * 12} 203 l6 -12`}
+              d={`M${x0 + 6 + i * 12} 129 l6 13 M${x0 + 6 + i * 12} 211 l6 -13`}
               {...draw(0.35 + 0.02 * i)}
             />
           ))}
@@ -85,7 +97,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       {/* centre joint line — drawn over the threads, marking where the two
           bar ends meet. This is what callout 03 points at. */}
       <motion.path
-        d="M380 137 v66"
+        d="M380 129 v82"
         stroke="var(--color-red)"
         strokeWidth="1.5"
         strokeDasharray="4 5"
@@ -93,18 +105,19 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       />
 
       {/* ---- cold-upset transitions --------------------------------------
-           Both flares are symmetric about the y=170 axis the bar, body and
-           threads share (150→137 out, 66 down, 203→190 back), and both are
-           drawn after the body so the bar mouth reads the same on each side. */}
+           The bar is forged up from 68 to 82 before threading — a real ~17%
+           upset, not the balloon this used to draw. Both flares are symmetric
+           about y=170 and both sit after the body, so the bar mouth reads the
+           same on each side. */}
       <motion.path
-        d="M170 150 q16 -6 26 -13 h10 v66 h-10 q-10 7 -26 -13 Z"
+        d="M170 136 q16 -4 26 -7 h10 v82 h-10 q-10 3 -26 -7 Z"
         fill="var(--ill-fill)"
         stroke="var(--color-red)"
         strokeWidth="2"
         {...draw(0.25)}
       />
       <motion.path
-        d="M590 150 q-16 -6 -26 -13 h-10 v66 h10 q10 7 26 -13 Z"
+        d="M590 136 q-16 -4 -26 -7 h-10 v82 h10 q10 3 26 -7 Z"
         fill="var(--ill-fill)"
         stroke="var(--color-red)"
         strokeWidth="2"
@@ -113,11 +126,11 @@ export function CouplerAnatomy({ className }: { className?: string }) {
 
       {/* ---- ribbed rebar, right ----------------------------------------- */}
       <motion.g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
-        <rect x="590" y="150" width="150" height="40" rx="2" />
-        {Array.from({ length: 9 }).map((_, i) => (
+        <rect x="590" y="136" width="150" height="68" rx="2" />
+        {Array.from({ length: 8 }).map((_, i) => (
           <motion.path
             key={`rib-r-${i}`}
-            d={`M${604 + i * 16} 150 l10 40`}
+            d={`M${596 + i * 18} 136 l14 68`}
             {...draw(0.02 * i)}
           />
         ))}
@@ -132,10 +145,10 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           strokeDasharray="3 3"
         >
           <path d="M186 168 v-78 h-70" />
-          <path d="M272 137 v-60 h-40" />
+          <path d="M272 129 v-52 h-40" />
           <path d="M380 228 v52 h-70" />
           <path d="M520 228 v34 h96" />
-          <path d="M660 150 v-78 h20" />
+          <path d="M660 136 v-64 h20" />
         </g>
 
         <g
