@@ -55,6 +55,8 @@ const bool = (fd: FormData, k: string) => (fd.get(k) ? 1 : 0);
  *  that later opts into caching still updates the moment content changes. */
 function refreshPublic() {
   revalidatePath("/");
+  revalidatePath("/ats");
+  revalidatePath("/machine-services");
   revalidatePath("/about-us");
   revalidatePath("/find-your-coupler");
 }

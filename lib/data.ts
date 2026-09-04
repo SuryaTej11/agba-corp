@@ -366,3 +366,185 @@ export const CTA_BAND = {
   title: "Let's build something that holds",
   body: "Whether you're a contractor, consultant or distributor, our team is ready with sizing, certificates and pricing.",
 } as const;
+
+/* ========================================================= ATS SYSTEM ==== */
+
+/**
+ * The AGBA Thread System page. Copy is reproduced verbatim from the reference
+ * build the client supplied (agbaweb.netlify.app/ats) — do not paraphrase it.
+ */
+export const ATS = {
+  hero: {
+    eyebrow: "ATS System",
+    title: "THE COUPLER IS THE EASY HALF",
+    lede: "A connection is a system, not a component. The AGBA Thread System is our name for engineering all of it — bar end, upset, thread, tooling, coupler, gauges and fitting — as one thing, which is why we supply both halves.",
+  },
+
+  principle: {
+    eyebrow: "Principle One",
+    title: "A CONNECTION IS ONLY AS GOOD AS ITS LEAST CONTROLLED PROCESS",
+    lede: "The chain does not care which link was set badly. Any single process, done poorly, sets the strength of the whole connection.",
+    chain: ["Steel", "Upset", "Thread", "Tooling", "Coupler", "Gauging", "Fitting"],
+    points: [
+      {
+        title: "A coupler cannot rescue a poor thread",
+        body: "The coupler is the easiest part of a connection to certify and the least able to make up for the rest. A Standard Mark on the sleeve says nothing about the thread cut into the bar it is joining.",
+      },
+      {
+        title: "A thread cannot rescue a bar that was never upset",
+        body: "Thread a bar that was never cold forged and the finest thread form in the world has been cut into a section that has already lost a fifth of its area.",
+      },
+    ],
+  },
+
+  coldForging: {
+    eyebrow: "Cold Forging",
+    title: "CUT A THREAD ON A BARE BAR AND YOU CUT THE BAR",
+    lede: "A thread is not added to steel — it is carved out of it. The only question is whether the metal was put back first. IS 16172:2023 Annex G-2(b) requires the bar end to be hydraulically enlarged by cold forging before any thread is cut.",
+    cards: [
+      {
+        bad: true,
+        title: "Threaded without cold forging",
+        spec: "Ø32 bar · thread cut directly · M32 × 3.5",
+        figure: "80%",
+        figureLabel: "of parent bar section at the thread root",
+        body: "One fifth of the bar machined away. The connection cannot reach 130% of yield, and it fails at the threads — brittle, inside the coupler, where nobody can see it.",
+      },
+      {
+        bad: false,
+        title: "Cold forged, then threaded",
+        spec: "Ø32 bar · end upset, then threaded · M36 × 3.5",
+        figure: "104%",
+        figureLabel: "of parent bar section at the thread root",
+        body: "Metal is displaced outward before any cutting begins. The threaded section is stronger than the bar, so failure is forced back into the parent bar.",
+      },
+    ],
+    table: {
+      head: [
+        "Bar",
+        "Parent area",
+        "Threaded directly",
+        "% of bar",
+        "Cold forged, then threaded",
+        "% of bar",
+      ],
+      rows: [
+        ["20 mm", "314 mm²", "M20 × 2.5 · 245 mm²", "77.9%", "M24 × 3.0 · 353 mm²", "112.2%"],
+        ["25 mm", "491 mm²", "M25 × 3.0 · 387 mm²", "78.8%", "M29 × 3.5 · 519 mm²", "105.8%"],
+        ["32 mm", "804 mm²", "M32 × 3.5 · 648 mm²", "80.5%", "M36 × 3.5 · 841 mm²", "104.5%"],
+      ],
+    },
+    note: "Stress area on ISO metric basis, As = π/4 · ((d₂+d₃)/2)². Cold forging applies to the rebar end only — AGBA couplers are machined from special alloy tube, never forged.",
+  },
+
+  thread: {
+    eyebrow: "The Thread",
+    title: "EVERY MILLIMETRE HAS A PURPOSE",
+    lede: "IS 16172:2023 places no constraint on thread form. That freedom is where the difference between one coupler and another actually lives — so we treat the thread as a designed feature, not a copied one.",
+    table: {
+      head: ["Dimension", "What it is set for"],
+      rows: [
+        ["Root radius", "Fatigue resistance — a radiused root carries a connection through load reversal; a sharp one is where a crack starts"],
+        ["Pitch", "Load distribution along the engaged threads"],
+        ["Engagement length", "Strength transfer from bar to coupler"],
+        ["Outside diameter", "Concrete flow and cover at the connection plane"],
+        ["Chamfer", "Installation without cross-starting the thread"],
+      ],
+    },
+    note: "A radius is only worth what the tooling actually forms. AGBA controls it as a drawing feature, gauges it, and audits sectioned couplers against it.",
+    caption: "The connection in place · bar, thread, coupler, thread, bar",
+  },
+
+  otherHalf: {
+    eyebrow: "The Other Half",
+    title: "MADE ON YOUR SITE, BY OUR PEOPLE",
+    lede: "AGBA deploys cold forging and threading machines with trained technicians, so the bar end and the coupler come out of the same quality system.",
+  },
+} as const;
+
+/* =================================================== MACHINE SERVICES ==== */
+
+/** Verbatim from the reference build (agbaweb.netlify.app/machine-services). */
+export const MACHINE_SERVICES = {
+  hero: {
+    eyebrow: "Machine Services",
+    title: "WE MAKE BOTH HALVES OF THE CONNECTION",
+    lede: "Most suppliers sell the coupler and leave the bar end to whoever the contractor hires. AGBA deploys the cold forging and threading machines, the tooling, the gauges and the technicians — so one quality system covers the whole connection.",
+  },
+
+  deploy: {
+    eyebrow: "What We Deploy",
+    title: "MACHINES, TOOLING, AND THE PEOPLE TO RUN THEM",
+    cards: [
+      {
+        kicker: "Cold forging",
+        title: "Hydraulic upsetting",
+        body: "The bar end is enlarged so the section after threading is not less than the parent bar. Single pass — double forging is not permitted by the standard.",
+      },
+      {
+        kicker: "Threading",
+        title: "Parallel thread",
+        body: "Cut into the upset region only, to the designed length and depth for the size, using AGBA tooling matched to the coupler.",
+      },
+      {
+        kicker: "Technicians",
+        title: "Trained to the process",
+        body: "Operators who know the clause, not just the machine. Gauging and proof loading are part of the job, not an extra.",
+      },
+    ],
+    photoSlot: "Photographs of the machines on site — to be added",
+  },
+
+  models: {
+    eyebrow: "Service Models",
+    title: "THREE WAYS TO WORK WITH US",
+    lede: "Which one suits depends on the size of the contract, the duration, and whether the bar is being processed in a yard or at the face.",
+    options: [
+      {
+        title: "On-site deployment",
+        body: "Machines stationed at your site for the duration of the contract, with our technician.",
+        points: [
+          "Machines and tooling supplied",
+          "Technician deployed",
+          "Monthly basis",
+          "Suits sustained volume",
+        ],
+      },
+      {
+        title: "Mobile van service",
+        body: "A van with the machines mounted, visiting on a scheduled day to process what is ready.",
+        points: [
+          "No machine on your site",
+          "Booked by the day",
+          "Suits intermittent volume",
+          "Vidarbha and nearby",
+        ],
+      },
+      {
+        title: "Machine rental",
+        body: "Machines and tooling on rent where you have your own trained operator.",
+        points: [
+          "Monthly rental",
+          "Tooling supplied and consumed",
+          "Servicing by AGBA",
+          "Operator training available",
+        ],
+      },
+    ],
+    note: "Cold forging and threading are quoted as one combined rate per joint. Rates depend on bar size, volume and location — tell us the contract and we will quote it.",
+  },
+
+  onSite: {
+    eyebrow: "On Site",
+    title: "WHAT HAPPENS TO EVERY BAR END",
+    lede: "The five steps of IS 16172:2023 Annex G-2, carried out and recorded. A manufacturer may add to them; nobody may subtract.",
+    steps: [
+      { no: "01", title: "Sawn cut", body: "Square to the axis. Disc cutting and gas cutting are named and excluded by the standard." },
+      { no: "02", title: "Cold forge", body: "Hydraulically upset so the section after threading is not less than the parent bar." },
+      { no: "03", title: "Thread", body: "Parallel thread cut into the upset region only, to the designed length and depth." },
+      { no: "04", title: "Gauge", body: "GO and NO-GO on every end. A failed thread is cut off and the bar reprocessed." },
+      { no: "05", title: "Proof load", body: "Loaded to 80% of specified yield and machine punched on passing." },
+    ],
+    note: "Threads are capped and protected until the next bar is offered up. A signed service slip is raised for every visit, with quantities by size, for your records and ours.",
+  },
+} as const;

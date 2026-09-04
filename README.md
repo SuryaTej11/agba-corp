@@ -10,7 +10,7 @@ supplied brandmark. Three bands per page invert to near-black for rhythm (Forged
 Threaded, the manufacturing process, and the closing CTA + footer); the control panel stays
 dark throughout.
 
-Still **four public pages**, as before.
+Now **six public pages** — the original four plus ATS System and Machine Services.
 
 ## Running it
 
@@ -34,6 +34,8 @@ SQLite and the uploaded files live under `data/`.
 
 | Route | What's on it |
 |---|---|
+| `/ats` | **ATS System** — the connection as a system: the seven-link chain, cold forging vs bare-bar threading with the stress-area table, thread-form dimensions, and the hand-off to Machine Services |
+| `/machine-services` | **Machine Services** — what AGBA deploy, the three service models, and the five site steps of IS 16172:2023 Annex G-2 |
 | `/` | Hero · **certification brandmark strip** · **What is a Coupler?** · Forged Before Threaded · Slim Wall · Products & Services · Manufacturing Process · **Testimonials** · **News & Events** · CTA |
 | `/about-us` | Story · stats · principles · **Knowledge Center (2 tabs)** · **News & Events** (full) · locations · CTA |
 | `/find-your-coupler` | **Batch lookup** → certificate + related documents · traceability chain · **"Can't find your batch?" → Request Your Quote / Request Assistance** · **gated Downloads library** (empty until AGBA publish files) · CTA |

@@ -31,19 +31,24 @@ export const SITE = {
 
 export const ROUTES = {
   home: "/",
+  ats: "/ats",
+  machines: "/machine-services",
   about: "/about-us",
   trace: "/find-your-coupler",
   contact: "/contact",
 } as const;
 
 /**
- * Four public pages, exactly as on the live site. "Find Your Join" is
+ * Six public pages. ATS System and Machine Services were added from the
+ * client's reference build; the original four are unchanged. "Find Your Join" is
  * renamed to "Find Your Coupler" — the page itself leads with the
  * "Batch Traceability" eyebrow and a "Verify Your Batch" action, so all
  * three of the client's suggested names land in their natural slot.
  */
 export const NAV = [
   { label: "Home", href: ROUTES.home },
+  { label: "ATS System", href: ROUTES.ats },
+  { label: "Machine Services", href: ROUTES.machines },
   { label: "About Us", href: ROUTES.about },
   { label: "Find Your Coupler", href: ROUTES.trace },
   { label: "Contact", href: ROUTES.contact },

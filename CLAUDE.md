@@ -1,7 +1,7 @@
 # AGBA Corporation — website
 
 Next.js 16 rebuild of agbacorp.com (a Nagpur manufacturer of IS 16172:2023 parallel-thread
-rebar couplers). Four public pages plus a password-protected control panel. See
+rebar couplers). Six public pages plus a password-protected control panel. See
 [README.md](README.md) for setup, architecture and deployment.
 
 ## Next.js 16 gotchas
@@ -90,8 +90,12 @@ is fine.
 
 ## Client decisions worth not re-litigating
 
-- **Four pages only.** Downloads, Knowledge Center and News are *sections inside* the four
-  pages, not new routes.
+- **Six pages.** Originally four; **ATS System** (`/ats`) and **Machine Services**
+  (`/machine-services`) were added 2026-09-05 from the client's reference build at
+  agbaweb.netlify.app. Their copy is reproduced **verbatim** in `ATS` and
+  `MACHINE_SERVICES` in `lib/data.ts` — the client asked for it word for word, so do not
+  reword it. Downloads, Knowledge Center and News remain *sections inside* pages, not routes.
+  The header switches to the drawer below `xl` now; six labels do not fit at `lg`.
 - "Find Your Join" was renamed **Find Your Coupler** (nav), with "Batch Traceability" as the
   page eyebrow and "Verify Your Batch" as the button — all three client suggestions used.
 - **Knowledge Center** is the renamed "Understanding the Code". No such section existed on

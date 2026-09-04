@@ -71,7 +71,7 @@ export function Header() {
         </Link>
 
         {/* --- desktop nav --- */}
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
           {NAV.map((item) => {
             const active =
               item.href === ROUTES.home
@@ -83,7 +83,7 @@ export function Header() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "relative px-4 py-2 text-[0.95rem] font-medium transition-colors duration-300",
+                  "relative whitespace-nowrap px-3 py-2 text-[0.9rem] font-medium transition-colors duration-300",
                   active ? "text-red" : "text-muted hover:text-heading",
                 )}
               >
@@ -91,7 +91,7 @@ export function Header() {
                 {active && (
                   <motion.span
                     layoutId="nav-underline"
-                    className="absolute inset-x-4 -bottom-0.5 h-px bg-red"
+                    className="absolute inset-x-3 -bottom-0.5 h-px bg-red"
                     transition={
                       reduce
                         ? { duration: 0 }
@@ -107,7 +107,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={telLink(CONTACT.phones[0].tel)}
-            className="hidden items-center gap-2 px-3 py-2 text-sm text-muted transition-colors hover:text-heading xl:flex"
+            className="hidden items-center gap-2 px-3 py-2 text-sm text-muted transition-colors hover:text-heading 2xl:flex"
           >
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             <span className="data">{CONTACT.phones[0].display}</span>
@@ -123,7 +123,7 @@ export function Header() {
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="grid h-11 w-11 place-items-center rounded-sm border border-line text-heading transition-colors hover:border-red lg:hidden"
+            className="grid h-11 w-11 place-items-center rounded-sm border border-line text-heading transition-colors hover:border-red xl:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -146,7 +146,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="border-t border-line bg-base lg:hidden"
+            className="border-t border-line bg-base xl:hidden"
           >
             <nav className="container-x flex flex-col py-4" aria-label="Mobile">
               {NAV.map((item, i) => {
