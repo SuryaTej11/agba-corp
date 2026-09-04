@@ -115,7 +115,7 @@ export const FORGED = {
 export const SLIM_WALL = {
   eyebrow: "Slimmer wall, stronger outcome",
   title: "25% SLIMMER WALL",
-  lede: "AGBA couplers meet IS 16172 on thread engagement, tensile and fatigue performance — then go further. A 7.5 mm wall on a 32 mm bar versus a conventional 10–12 mm means engineered clearance, built to pour.",
+  lede: "AGBA couplers meet IS 16172 on thread engagement, tensile and fatigue performance — then go further. A 7.75 mm wall on a 32 mm bar versus a conventional 10–12 mm means engineered clearance, built to pour.",
   benefits: [
     "Lower honeycombing",
     "Better concrete flow",

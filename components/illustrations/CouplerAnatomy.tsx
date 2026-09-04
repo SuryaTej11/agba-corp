@@ -38,15 +38,6 @@ export function CouplerAnatomy({ className }: { className?: string }) {
         ))}
       </motion.g>
 
-      {/* ---- cold-upset transition, left --------------------------------- */}
-      <motion.path
-        d="M170 150 q16 -6 26 -13 h10 v106 h-10 q-10 -7 -26 -13 Z"
-        fill="var(--ill-fill)"
-        stroke="var(--color-red)"
-        strokeWidth="2"
-        {...draw(0.25)}
-      />
-
       {/* ---- coupler body ------------------------------------------------
            Drawn before the threads so the cutaway reads correctly: the
            threaded bar ends sit *inside* the body, not behind it. */}
@@ -61,7 +52,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           stroke="var(--color-red)"
           strokeWidth="2"
         />
-        {/* wall hatching, top and bottom — the 7.5 mm section */}
+        {/* wall hatching, top and bottom — the 7.75 mm section */}
         <rect x="196" y="112" width="368" height="25" fill="var(--ill-deep)" opacity="0.85" />
         <rect x="196" y="203" width="368" height="25" fill="var(--ill-deep)" opacity="0.85" />
         {Array.from({ length: 30 }).map((_, i) => (
@@ -101,9 +92,19 @@ export function CouplerAnatomy({ className }: { className?: string }) {
         {...fade(0.75)}
       />
 
-      {/* ---- cold-upset transition, right -------------------------------- */}
+      {/* ---- cold-upset transitions --------------------------------------
+           Both flares are symmetric about the y=170 axis the bar, body and
+           threads share (150→137 out, 66 down, 203→190 back), and both are
+           drawn after the body so the bar mouth reads the same on each side. */}
       <motion.path
-        d="M590 150 q-16 -6 -26 -13 h-10 v106 h10 q10 -7 26 -13 Z"
+        d="M170 150 q16 -6 26 -13 h10 v66 h-10 q-10 7 -26 -13 Z"
+        fill="var(--ill-fill)"
+        stroke="var(--color-red)"
+        strokeWidth="2"
+        {...draw(0.25)}
+      />
+      <motion.path
+        d="M590 150 q-16 -6 -26 -13 h-10 v66 h10 q10 7 26 -13 Z"
         fill="var(--ill-fill)"
         stroke="var(--color-red)"
         strokeWidth="2"
@@ -165,7 +166,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
             04
           </text>
           <text x="640" y="266">
-            7.5 mm WALL
+            7.75 mm WALL
           </text>
           <text x="662" y="68" fill="var(--color-red)">
             05

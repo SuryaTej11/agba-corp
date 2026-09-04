@@ -20,7 +20,7 @@ export function WallSection({
   const reduce = useReducedMotion();
   const agba = variant === "agba";
 
-  // Scale: 1 mm ≈ 1.9 px. Bar Ø32. AGBA OD 53 (wall 7.5), conventional OD 60.
+  // Scale: 1 mm ≈ 1.9 px. Bar Ø32. AGBA OD 53 (wall 7.75), conventional OD 60.
   const cx = 150;
   const cy = 150;
   const rBar = 30;
@@ -38,7 +38,7 @@ export function WallSection({
       role="img"
       aria-label={
         agba
-          ? "Cross-section of the AGBA coupler on a 32 mm bar: 53 mm outside diameter, 7.5 mm wall, leaving clear space for concrete to flow around it."
+          ? "Cross-section of the AGBA coupler on a 32 mm bar: 53 mm outside diameter, 7.75 mm wall, leaving clear space for concrete to flow around it."
           : "Cross-section of a conventional coupler on the same 32 mm bar: 58 to 62 mm outside diameter with a 10 to 12 mm wall, crowding the clear cover."
       }
     >
@@ -143,7 +143,7 @@ export function WallSection({
         fontFamily="var(--font-jetbrains-mono), monospace"
         fontWeight="500"
       >
-        {agba ? "7.5" : "10–12"}
+        {agba ? "7.75" : "10–12"}
       </text>
 
       {/* OD label */}
