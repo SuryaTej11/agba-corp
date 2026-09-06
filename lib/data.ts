@@ -548,3 +548,61 @@ export const MACHINE_SERVICES = {
     note: "Threads are capped and protected until the next bar is offered up. A signed service slip is raised for every visit, with quantities by size, for your records and ours.",
   },
 } as const;
+
+/**
+ * The Company section, taken from the client's reference build at
+ * agbaweb.netlify.app/company and reproduced **verbatim** — the client asked
+ * for it word for word, so do not reword or re-punctuate it.
+ *
+ * The reference page's `#enquiry` section is deliberately not here: the client
+ * asked for everything except the enquiry, and the works/office/contact blocks
+ * on that page sit inside `#enquiry`, so they are excluded with it. Our own
+ * contact details already live in `CONTACT` in lib/site.ts.
+ */
+export const COMPANY = {
+  intro: {
+    eyebrow: "Company",
+    title: "MADE IN NAGPUR, TO THE STANDARD",
+    lede: "AGBA Corporation manufactures parallel-thread mechanical rebar couplers at C-94, MIDC Butibori, under BIS Licence CM/L-7400091707. We supply the couplers, and we deploy the machines and technicians that prepare the bar ends they join.",
+    cards: [
+      {
+        kicker: "Both halves",
+        title: "Coupler and bar end",
+        body: "Cold forging and threading machines with trained technicians, so one quality system covers the whole connection.",
+      },
+      {
+        kicker: "Traceable",
+        title: "Marking to mill heat",
+        body: "Batch and heat traceability from raw tube to despatch, recorded and retrievable against the marking on the coupler.",
+      },
+      {
+        kicker: "Local",
+        title: "Nagpur based",
+        body: "Technical support, replacement stock and a site visit are a drive away, not a courier away.",
+      },
+    ],
+  },
+  credentials: {
+    eyebrow: "Credentials",
+    title: "LICENCE, CERTIFICATION AND REGISTRATION",
+    rows: [
+      ["BIS Licence", "CM/L-7400091707 — IS 16172:2023, Class L and Class H"],
+      ["ISO 9001:2015", "GACB9028 — quality management, valid to April 2029"],
+      ["ISO 45001:2018", "GACB9027 — occupational health and safety, valid to April 2029"],
+      ["GSTIN", "27ACHFA9560G1Z6"],
+      ["PAN", "ACHFA9560G"],
+      ["UDYAM", "MH-20-0285831 — Micro enterprise"],
+    ],
+    affiliations: {
+      title: "AFFILIATIONS & MEMBERSHIPS",
+      rows: [["Indian Concrete Institute", "Organisational Member"]],
+    },
+    note: "Membership listed separately from the BIS licence and ISO certificates, as affiliation and certification are different things.",
+  },
+  works: {
+    eyebrow: "The works",
+    title: "C-94, MIDC BUTIBORI",
+    body: "Tube inward with heat number logged, cutting, machining, threading, 100% GO / NO-GO gauging, batch marking and despatch — with a test certificate against every lot.",
+    photoSlot: "Photographs of the works — to be added",
+  },
+} as const;

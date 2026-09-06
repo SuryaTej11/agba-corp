@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { MapPin } from "lucide-react";
+import { Camera, MapPin } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import { SpecTable } from "@/components/ui/SpecTable";
 import { KnowledgeCenter } from "@/sections/about/KnowledgeCenter";
 import { NewsSection } from "@/sections/shared/NewsSection";
 import { CTABand } from "@/sections/shared/CTABand";
-import { ABOUT } from "@/lib/data";
+import { ABOUT, COMPANY } from "@/lib/data";
 import { CONTACT } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -81,6 +82,88 @@ export default function AboutPage() {
               </RevealItem>
             ))}
           </RevealGroup>
+        </div>
+      </Section>
+
+      {/* --- company: made in Nagpur --- */}
+      <Section id="company">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow={COMPANY.intro.eyebrow}
+            title={COMPANY.intro.title}
+            lede={COMPANY.intro.lede}
+          />
+          <RevealGroup className="mt-14 grid gap-5 md:grid-cols-3">
+            {COMPANY.intro.cards.map((c) => (
+              <RevealItem key={c.title}>
+                <article className="panel panel-hover h-full p-7">
+                  <p className="data text-[0.62rem] uppercase tracking-[0.16em] text-red">
+                    {c.kicker}
+                  </p>
+                  <h3 className="mt-4 font-display text-xl font-semibold uppercase leading-snug text-heading">
+                    {c.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {c.body}
+                  </p>
+                </article>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+        </div>
+      </Section>
+
+      {/* --- credentials (dark band, as in the reference) --- */}
+      <Section id="credentials" className="on-dark bg-deep">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow={COMPANY.credentials.eyebrow}
+            title={COMPANY.credentials.title}
+          />
+
+          <Reveal delay={0.1} className="mt-12">
+            <div className="panel p-1">
+              <SpecTable
+                head={["Credential", "Reference"]}
+                rows={COMPANY.credentials.rows}
+              />
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.15} className="mt-10">
+            <h3 className="data text-xs font-medium uppercase tracking-[0.16em] text-muted-2">
+              {COMPANY.credentials.affiliations.title}
+            </h3>
+            <div className="panel mt-4 p-1">
+              <SpecTable
+                head={["Body", "Status"]}
+                rows={COMPANY.credentials.affiliations.rows}
+              />
+            </div>
+            <p className="mt-5 max-w-3xl text-xs leading-relaxed text-muted-2">
+              {COMPANY.credentials.note}
+            </p>
+          </Reveal>
+        </div>
+      </Section>
+
+      {/* --- the works --- */}
+      <Section id="works">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow={COMPANY.works.eyebrow}
+            title={COMPANY.works.title}
+            lede={COMPANY.works.body}
+          />
+          {/* Reserved slot — AGBA are still to supply these photographs. */}
+          <Reveal delay={0.12} className="mt-12">
+            <div className="flex items-center justify-center gap-3 rounded-sm border border-dashed border-line-2 bg-surface px-6 py-12 text-center">
+              <Camera className="h-5 w-5 shrink-0 text-muted-2" strokeWidth={1.5} />
+              <p className="data text-[0.66rem] uppercase tracking-[0.16em] text-muted-2">
+                {COMPANY.works.photoSlot}
+              </p>
+            </div>
+          </Reveal>
         </div>
       </Section>
 

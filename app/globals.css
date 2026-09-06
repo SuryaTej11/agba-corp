@@ -92,6 +92,19 @@
    Put `.on-dark` on any full-bleed band (or the admin shell) and everything
    inside inverts — no per-component dark variants anywhere in the codebase.
    ========================================================================= */
+/* The brand lockup ships as two raster variants (the client's own artwork).
+   The reversed one is the dark-band counterpart, so it follows the same token
+   scope everything else does rather than needing a prop. */
+.logo-rev {
+  display: none;
+}
+.on-dark .logo-std {
+  display: none;
+}
+.on-dark .logo-rev {
+  display: block;
+}
+
 .on-dark {
   --color-base: #0b0c0e;
   --color-surface: #16181c;

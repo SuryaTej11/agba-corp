@@ -25,7 +25,7 @@ export function HeroHome() {
       {/* engineering-drawing grid + a red bloom behind the product */}
       <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute -right-40 top-10 h-[42rem] w-[42rem] rounded-full opacity-25 blur-[120px]"
+        className="pointer-events-none absolute -right-0 top-10 h-[42rem] w-[42rem] rounded-full opacity-25 blur-[120px]"
         style={{
           background:
             "radial-gradient(circle, rgba(212,16,0,0.55) 0%, transparent 65%)",
@@ -291,7 +291,7 @@ function HeroCoupler() {
           fontFamily="var(--font-jetbrains-mono), monospace"
           letterSpacing="0.1em"
         >
-          OD 53 mm · WALL 7.5 mm
+          OD 48 mm · WALL 7.75 mm
         </text>
       </svg>
 

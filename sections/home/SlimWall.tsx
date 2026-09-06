@@ -21,7 +21,7 @@ export function SlimWall() {
               {
                 variant: "agba" as const,
                 label: "AGBA Slim Wall",
-                value: "7.5 mm",
+                value: "7.75 mm",
                 note: "OD 53 mm · free concrete flow",
                 good: true,
               },
