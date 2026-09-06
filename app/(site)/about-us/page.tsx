@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Camera, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -155,15 +155,6 @@ export default function AboutPage() {
             title={COMPANY.works.title}
             lede={COMPANY.works.body}
           />
-          {/* Reserved slot — AGBA are still to supply these photographs. */}
-          <Reveal delay={0.12} className="mt-12">
-            <div className="flex items-center justify-center gap-3 rounded-sm border border-dashed border-line-2 bg-surface px-6 py-12 text-center">
-              <Camera className="h-5 w-5 shrink-0 text-muted-2" strokeWidth={1.5} />
-              <p className="data text-[0.66rem] uppercase tracking-[0.16em] text-muted-2">
-                {COMPANY.works.photoSlot}
-              </p>
-            </div>
-          </Reveal>
         </div>
       </Section>
 

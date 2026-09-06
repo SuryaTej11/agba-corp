@@ -54,14 +54,6 @@ export const CERTIFICATIONS = {
       subtitle:
         "Independent lab testing with a signed test certificate on every batch.",
     },
-    {
-      // Deliberately empty. See components/ui/CertBadge.tsx — a certification
-      // mark is never drawn before the licence is confirmed.
-      kind: "reserved" as const,
-      title: "ISI Mark",
-      subtitle: "BIS licence pending confirmation.",
-      note: "Reserved slot — the official ISI mark and CM/L licence number drop in here once issued.",
-    },
   ],
 } as const;
 
@@ -603,6 +595,5 @@ export const COMPANY = {
     eyebrow: "The works",
     title: "C-94, MIDC BUTIBORI",
     body: "Tube inward with heat number logged, cutting, machining, threading, 100% GO / NO-GO gauging, batch marking and despatch — with a test certificate against every lot.",
-    photoSlot: "Photographs of the works — to be added",
   },
 } as const;

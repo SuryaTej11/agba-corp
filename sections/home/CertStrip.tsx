@@ -20,14 +20,13 @@ export function CertStrip() {
           lede={CERTIFICATIONS.lede}
         />
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {CERTIFICATIONS.marks.map((m, i) => (
             <CertBadge
               key={m.title}
               kind={m.kind}
               title={m.title}
               subtitle={m.subtitle}
-              note={"note" in m ? m.note : undefined}
               index={i}
             />
           ))}

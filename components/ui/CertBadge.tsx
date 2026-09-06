@@ -7,16 +7,12 @@ import { cn } from "@/lib/utils";
  * Certification brandmark — the trust strip on the landing page.
  *
  * Each mark is drawn, not photographed, so the strip stays crisp and there is
- * no licensing question over borrowed certification artwork.
- *
- * NOTE FOR THE ISI MARK:
- * `reserved` renders an explicitly empty, labelled slot. AGBA's ISI (BIS)
- * licence artwork and CM/L number are not yet confirmed, and a certification
- * mark must never be drawn speculatively — swap `reserved` for a real
- * `<IsiMark />` and the licence number the moment the licence is in hand.
+ * no licensing question over borrowed certification artwork. That rule still
+ * holds if an ISI mark is ever added here: draw it only once the BIS licence
+ * artwork is in hand, never speculatively.
  */
 
-export type CertKind = "standard" | "iso" | "safety" | "lab" | "reserved";
+export type CertKind = "standard" | "iso" | "safety" | "lab";
 
 const glyphs: Record<CertKind, React.ReactNode> = {
   // shield + tick — conformity to a governing standard
@@ -88,48 +84,22 @@ const glyphs: Record<CertKind, React.ReactNode> = {
       <path d="M14.5 28h19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
     </>
   ),
-  // dashed outline — the deliberately empty ISI slot
-  reserved: (
-    <>
-      <rect
-        x="8"
-        y="8"
-        width="32"
-        height="32"
-        rx="3"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeDasharray="5 5"
-        fill="none"
-      />
-      <path
-        d="M24 18v12M18 24h12"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        opacity="0.6"
-      />
-    </>
-  ),
 };
 
 export function CertBadge({
   kind,
   title,
   subtitle,
-  note,
   index = 0,
   className,
 }: {
   kind: CertKind;
   title: string;
   subtitle: string;
-  note?: string;
   index?: number;
   className?: string;
 }) {
   const reduce = useReducedMotion();
-  const muted = kind === "reserved";
 
   return (
     <motion.div
@@ -143,15 +113,13 @@ export function CertBadge({
       }
       className={cn(
         "panel panel-hover group flex flex-col items-center px-5 py-7 text-center",
-        muted && "border-dashed opacity-70",
         className,
       )}
     >
       <svg
         viewBox="0 0 48 48"
         className={cn(
-          "h-11 w-11 transition-colors duration-500",
-          muted ? "text-muted-2" : "text-red group-hover:text-red-bright",
+          "h-11 w-11 text-red transition-colors duration-500 group-hover:text-red-bright",
         )}
         aria-hidden="true"
       >
@@ -162,7 +130,6 @@ export function CertBadge({
         {title}
       </p>
       <p className="mt-2 text-xs leading-relaxed text-muted">{subtitle}</p>
-      {note && <p className="mt-3 text-[0.68rem] leading-relaxed text-muted-2">{note}</p>}
     </motion.div>
   );
 }
