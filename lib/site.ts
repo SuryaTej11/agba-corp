@@ -11,6 +11,12 @@ export const SITE = {
   shortName: "AGBA",
   legalName: "AGBA Corporation",
   tagline: "Build with trust. Build with AGBA.",
+  /**
+   * The line that sits under the name in the brand lockup. Distinct from
+   * `tagline` above: that one closes the CTAs and the footer copy, this one
+   * belongs to the mark, and both come from AGBA's own material.
+   */
+  lockupTagline: "Integrity in every connection",
   url: "https://agbacorp.com",
   description:
     "IS 16172:2023 certified parallel-thread rebar couplers — forged before threaded, 100% gauge-checked, NABL tested. Manufactured at Butibori MIDC, Nagpur and dispatched direct to site across India.",

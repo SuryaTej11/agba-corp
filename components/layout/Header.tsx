@@ -67,7 +67,7 @@ export function Header() {
           className="shrink-0"
           aria-label="AGBA Corporation — home"
         >
-          <Logo />
+          <Logo withName />
         </Link>
 
         {/* --- desktop nav --- */}

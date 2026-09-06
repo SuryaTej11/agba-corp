@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logoRev from "@/public/images/agba-logo-rev.png";
 import logoStd from "@/public/images/agba-logo.png";
+import { SITE } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 /**
@@ -85,12 +86,22 @@ export function LogoWordmark({ className }: { className?: string }) {
  * the token scope, so a lockup dropped into any dark band is correct without a
  * prop, the same way every other component here inverts.
  */
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+  className,
+  withName = false,
+}: {
+  className?: string;
+  /** Render the name and tagline beside the mark, as the client's build does. */
+  withName?: boolean;
+}) {
   return (
-    <span className={cn("inline-flex items-center", className)}>
+    <span className={cn("inline-flex items-center gap-[13px]", className)}>
+      {/* When the name is set beside it the mark is decorative, so it is not
+          announced twice. */}
       <Image
         src={logoStd}
-        alt="AGBA Corporation — rebar couplers"
+        alt={withName ? "" : "AGBA Corporation — rebar couplers"}
+        aria-hidden={withName || undefined}
         className="logo-std h-11 w-auto"
         priority
       />
@@ -101,6 +112,16 @@ export function Logo({ className }: { className?: string }) {
         className="logo-rev h-11 w-auto"
         priority
       />
+      {withName && (
+        <span className="flex flex-col">
+          <span className="font-display text-[1.0625rem] font-semibold uppercase leading-none tracking-[-0.01em] text-heading">
+            {SITE.name}
+          </span>
+          <span className="data mt-1 text-[0.5rem] uppercase leading-none tracking-[0.2em] text-muted-2">
+            {SITE.lockupTagline}
+          </span>
+        </span>
+      )}
     </span>
   );
 }
