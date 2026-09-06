@@ -77,7 +77,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
       className={`${archivo.variable} ${spaceGrotesk.variable} ${jetbrains.variable} antialiased`}
     >
-      <body className="bg-base">{children}</body>
+      <body className="bg-page">{children}</body>
     </html>
   );
 }

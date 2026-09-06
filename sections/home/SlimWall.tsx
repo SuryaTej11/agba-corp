@@ -59,7 +59,7 @@ export function SlimWall() {
         {/* benefit chips */}
         <RevealGroup className="mt-6 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
           {SLIM_WALL.benefits.map((b) => (
-            <RevealItem key={b} className="bg-base">
+            <RevealItem key={b} className="bg-page">
               <div className="group flex h-full items-center gap-3 px-5 py-4 transition-colors hover:bg-surface-2">
                 <Check
                   className="h-4 w-4 shrink-0 text-red transition-transform duration-300 group-hover:scale-125"

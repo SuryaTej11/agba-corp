@@ -70,12 +70,12 @@ export function DiagramFrame({
       {overflows && !scrolled && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--color-base)] to-transparent"
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--color-page)] to-transparent"
         />
       )}
 
       {overflows && !scrolled && (
-        <span className="data pointer-events-none absolute bottom-2 right-3 flex items-center gap-1.5 rounded-sm bg-base/90 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-muted-2 shadow-[var(--shadow-card)]">
+        <span className="data pointer-events-none absolute bottom-2 right-3 flex items-center gap-1.5 rounded-sm bg-page/90 px-2 py-1 text-[0.6rem] uppercase tracking-[0.12em] text-muted-2 shadow-[var(--shadow-card)]">
           <MoveHorizontal className="h-3 w-3" strokeWidth={2} />
           Scroll
         </span>

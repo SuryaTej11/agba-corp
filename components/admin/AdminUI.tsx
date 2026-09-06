@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 type State = { error?: string; ok?: string };
 
 const inputCls =
-  "w-full rounded-sm border border-line bg-base px-3 py-2.5 text-base sm:text-sm text-heading placeholder:text-muted-2 focus:border-red focus:outline-none";
+  "w-full rounded-sm border border-line bg-page px-3 py-2.5 text-base sm:text-sm text-heading placeholder:text-muted-2 focus:border-red focus:outline-none";
 
 export function Field({
   label,
@@ -124,7 +124,7 @@ export function FileField({
         name={name}
         type="file"
         accept={accept}
-        className="mt-2 w-full cursor-pointer rounded-sm border border-dashed border-line bg-base px-3 py-2.5 text-sm text-muted file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-red file:px-3 file:py-1.5 file:text-xs file:font-semibold file:uppercase file:tracking-wider file:text-white"
+        className="mt-2 w-full cursor-pointer rounded-sm border border-dashed border-line bg-page px-3 py-2.5 text-sm text-muted file:mr-3 file:cursor-pointer file:rounded-sm file:border-0 file:bg-red file:px-3 file:py-1.5 file:text-xs file:font-semibold file:uppercase file:tracking-wider file:text-white"
       />
       {hint && <p className="mt-1.5 text-xs text-muted-2">{hint}</p>}
     </div>

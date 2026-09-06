@@ -55,7 +55,7 @@ route it through there.
 ## Design system
 
 All tokens are in the `@theme` block at the top of `app/globals.css`. The site is a
-**light theme, ~70% white**: `--color-base` (white page), `--color-surface` (light bands),
+**light theme, ~70% white**: `--color-page` (white page), `--color-surface` (light bands),
 `--color-heading` (near-black text), `--color-muted` (body grey), and the brand
 `--color-red` `#d41000` lifted from the original site and the brandmark.
 
@@ -70,6 +70,12 @@ numbers, all technical data — use the `.data` class).
 
 Component classes worth reusing before writing new CSS: `.container-x`, `.eyebrow`,
 `.btn` + `.btn-primary`/`.btn-ghost`, `.panel`, `.panel-hover`, `.data`, `.grid-bg`.
+
+**Never name a colour token after a Tailwind font-size** (`xs`, `sm`, `base`, `lg`, `xl`,
+`2xl`…). A `--color-base` token generates a `text-base` *colour* utility that shadows the
+built-in `text-base` *font-size*, so every `text-base` in the codebase silently turns the
+text white and loses its size. That is why the page white is `--color-page`, not
+`--color-base`. The failure is invisible in review — it only shows up as unreadable text.
 
 Icons and diagrams are **inline SVG only — never unicode or emoji symbols.** The technical
 illustrations in `components/illustrations/` are hand-drawn and animate on scroll; when a

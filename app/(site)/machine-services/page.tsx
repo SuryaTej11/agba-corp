@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight, Camera, Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -55,16 +55,6 @@ export default function MachineServicesPage() {
               </RevealItem>
             ))}
           </RevealGroup>
-
-          {/* Reserved slot — the client is still to supply these photographs. */}
-          <Reveal delay={0.15} className="mt-5">
-            <div className="flex items-center justify-center gap-3 rounded-sm border border-dashed border-line-2 bg-surface px-6 py-12 text-center">
-              <Camera className="h-5 w-5 shrink-0 text-muted-2" strokeWidth={1.5} />
-              <p className="data text-[0.66rem] uppercase tracking-[0.16em] text-muted-2">
-                {deploy.photoSlot}
-              </p>
-            </div>
-          </Reveal>
         </div>
       </Section>
 
@@ -122,7 +112,7 @@ export default function MachineServicesPage() {
 
           <RevealGroup className="mt-14 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
             {onSite.steps.map((s) => (
-              <RevealItem key={s.no} className="bg-base">
+              <RevealItem key={s.no} className="bg-page">
                 <div className="group flex h-full flex-col px-6 py-7 transition-colors hover:bg-surface">
                   <span className="data text-xs font-medium text-red">
                     {s.no}

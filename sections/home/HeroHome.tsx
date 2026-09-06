@@ -79,7 +79,7 @@ export function HeroHome() {
             {...rise(0.5)}
           >
             {HERO.stats.map((s) => (
-              <div key={s.label} className="group bg-base px-4 py-5 transition-colors hover:bg-surface">
+              <div key={s.label} className="group bg-page px-4 py-5 transition-colors hover:bg-surface">
                 {/* "Class L & H" is the longest value — sized so it holds one
                     line in the narrowest column. */}
                 <dt className="font-display text-lg font-semibold leading-tight text-heading sm:text-xl">

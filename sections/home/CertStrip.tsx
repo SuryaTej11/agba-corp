@@ -12,7 +12,7 @@ import { ROUTES } from "@/lib/site";
  */
 export function CertStrip() {
   return (
-    <Section id="certifications" bordered={false} className="bg-base">
+    <Section id="certifications" bordered={false} className="bg-page">
       <div className="container-x">
         <SectionHeading
           eyebrow={CERTIFICATIONS.eyebrow}

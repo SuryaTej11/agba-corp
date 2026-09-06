@@ -40,7 +40,7 @@ export default function AboutPage() {
 
           <RevealGroup className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2">
             {ABOUT.stats.map((s) => (
-              <RevealItem key={s.value} className="bg-base">
+              <RevealItem key={s.value} className="bg-page">
                 <div className="group h-full px-6 py-7 transition-colors hover:bg-surface-2">
                   <p className="font-display text-2xl font-semibold text-heading">
                     {s.value}

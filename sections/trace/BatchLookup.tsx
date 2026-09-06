@@ -204,7 +204,7 @@ function FoundPanel({ batch }: { batch: FoundBatch }) {
 
       <dl className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
         {fields.map((f) => (
-          <div key={f.label} className="bg-base px-6 py-5">
+          <div key={f.label} className="bg-page px-6 py-5">
             <dt className="data text-[0.62rem] uppercase tracking-[0.14em] text-muted-2">
               {f.label}
             </dt>

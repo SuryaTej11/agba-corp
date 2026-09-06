@@ -13,7 +13,7 @@ export default async function LoginPage() {
   if (await isAuthed()) redirect("/admin");
 
   return (
-    <div className="on-dark grid min-h-dvh place-items-center bg-base px-5 py-16">
+    <div className="on-dark grid min-h-dvh place-items-center bg-page px-5 py-16">
       <div className="w-full max-w-sm">
         <div className="flex items-center gap-3">
           <LogoMark className="h-9 w-9 text-red" />

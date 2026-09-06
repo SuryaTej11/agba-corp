@@ -53,7 +53,7 @@ export function ProcessTimeline() {
                 >
                   {/* node */}
                   <span
-                    className="absolute left-0 top-1 grid h-10 w-10 place-items-center rounded-full border border-red bg-base md:left-1/2 md:top-8 md:-translate-x-1/2"
+                    className="absolute left-0 top-1 grid h-10 w-10 place-items-center rounded-full border border-red bg-page md:left-1/2 md:top-8 md:-translate-x-1/2"
                     aria-hidden="true"
                   >
                     <span className="data text-xs font-medium text-red">

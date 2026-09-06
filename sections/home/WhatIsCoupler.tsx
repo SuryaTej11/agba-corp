@@ -32,7 +32,7 @@ export function WhatIsCoupler() {
         <div className="mt-14 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <RevealGroup className="grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-1">
             {WHAT_IS.points.map((p) => (
-              <RevealItem key={p.title} className="bg-base">
+              <RevealItem key={p.title} className="bg-page">
                 <div className="group h-full px-6 py-6 transition-colors hover:bg-surface-2">
                   <h3 className="font-display text-lg font-semibold text-heading">
                     {p.title}

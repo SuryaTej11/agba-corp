@@ -492,7 +492,6 @@ export const MACHINE_SERVICES = {
         body: "Operators who know the clause, not just the machine. Gauging and proof loading are part of the job, not an extra.",
       },
     ],
-    photoSlot: "Photographs of the machines on site — to be added",
   },
 
   models: {

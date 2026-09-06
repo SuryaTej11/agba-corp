@@ -120,7 +120,7 @@ export default function DashboardPage() {
         <ul className="mt-4 space-y-2.5 text-sm text-muted">
           <li>
             · Change the control-panel password:{" "}
-            <code className="data rounded-sm bg-base px-1.5 py-0.5 text-xs text-heading">
+            <code className="data rounded-sm bg-page px-1.5 py-0.5 text-xs text-heading">
               npm run hash-password -- &quot;your-password&quot;
             </code>
             , then paste both lines into <code className="data text-xs">.env.local</code>.

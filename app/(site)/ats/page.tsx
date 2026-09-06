@@ -47,7 +47,7 @@ export default function AtsPage() {
 
           <RevealGroup className="mt-14 grid gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
             {principle.points.map((p) => (
-              <RevealItem key={p.title} className="bg-base">
+              <RevealItem key={p.title} className="bg-page">
                 <div className="h-full px-7 py-8 transition-colors hover:bg-surface">
                   <h3 className="font-display text-lg font-semibold uppercase leading-snug text-heading">
                     {p.title}
