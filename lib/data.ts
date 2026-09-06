@@ -61,7 +61,7 @@ export const CERTIFICATIONS = {
 export const WHAT_IS = {
   eyebrow: "The Basics",
   title: "WHAT IS A COUPLER?",
-  lede: "A rebar coupler is a threaded steel sleeve that joins two reinforcement bars end to end, so the join carries load as though the bar were continuous. It replaces the lap splice — the older method of simply overlapping two bars and trusting the concrete between them.",
+  lede: "A rebar coupler is a threaded steel sleeve that joins two reinforcement bars end to end, so the join carries load as though the bar were continuous. It replaces the lap splice — the older method of simply overlapping two bars and trusting the concrete between them. The bar ends are cold-forged, cut to a parallel thread form and drawn into the sleeve until the two faces meet, so the load path runs bar, thread, coupler, thread, bar — in steel the whole way, with nothing asked of the concrete around it. IS 16172:2023 governs what that connection has to achieve on thread engagement, tensile strength and behaviour under repeated load, and grades couplers Class L or Class H against it.",
   points: [
     {
       title: "It joins bar to bar, directly",
@@ -69,15 +69,23 @@ export const WHAT_IS = {
     },
     {
       title: "The length is fixed",
-      body: "A lap splice needs 40–60 bar diameters of overlap. A mechanical splice is a fixed short length, regardless of concrete grade or cover.",
+      body: "A lap splice needs an overlap of 40 to 60 times the bar diameter. A mechanical splice is a fixed short length, regardless of concrete grade or cover.",
+    },
+    {
+      title: "It saves the lapped steel",
+      body: "Every lap buries a length of bar in the overlap and pays for it twice, at both ends of every join. A coupler takes that length out of the order, which on a tall frame is measured in tonnes rather than metres.",
     },
     {
       title: "It uncrowds the cage",
       body: "No doubled-up bars at column-beam junctions — exactly where congestion, honeycombing and vibrator access are already worst.",
     },
     {
+      title: "It works where a lap cannot",
+      body: "Staged pours, precast connections, congested column heads, and bars that have to be spliced at one plane — cases where the code limits how much may be lapped at a section, or where there is simply no room to lap at all.",
+    },
+    {
       title: "It is verifiable",
-      body: "Every coupler is gauged, every batch is tested, and the certificate ties back to the heat number of the steel it was forged from.",
+      body: "Every coupler is gauged, every batch is tested, and the certificate ties back to the heat number of the steel it was made from.",
     },
   ],
   spliceCaption:

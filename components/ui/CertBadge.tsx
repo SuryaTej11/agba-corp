@@ -6,44 +6,66 @@ import { cn } from "@/lib/utils";
 /**
  * Certification brandmark — the trust strip on the landing page.
  *
- * Each mark is drawn, not photographed, so the strip stays crisp and there is
- * no licensing question over borrowed certification artwork. That rule still
- * holds if an ISI mark is ever added here: draw it only once the BIS licence
- * artwork is in hand, never speculatively.
+ * Each glyph depicts what its certificate actually covers, rather than being a
+ * generic badge: the splice that IS 16172 governs, the plan-do-check-act loop
+ * that ISO 9001 certifies, the head protection ISO 45001 is about, and the
+ * tensile test a NABL lab performs.
+ *
+ * These are AGBA's own drawings, NOT the official certification marks. The ISI
+ * (BIS) Standard Mark, a registrar's ISO mark and the NABL symbol are all
+ * controlled artwork, released to the licence holder by the issuing body and
+ * governed by its own usage rules — they are never approximated by hand. To
+ * show a real mark here, drop in the artwork from AGBA's certificate and the
+ * licence number that goes with it.
  */
 
 export type CertKind = "standard" | "iso" | "safety" | "lab";
 
 const glyphs: Record<CertKind, React.ReactNode> = {
-  // shield + tick — conformity to a governing standard
+  // the splice itself, inside a conformity ring — IS 16172 governs exactly
+  // this: two bars joined end to end through a coupler
   standard: (
     <>
-      <path
-        d="M24 5 40 11v13c0 10-7 16.5-16 19-9-2.5-16-9-16-19V11L24 5Z"
+      <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="2" fill="none" />
+      <path d="M11 24h7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+      <rect
+        x="18"
+        y="18.5"
+        width="12"
+        height="11"
+        rx="1.5"
         stroke="currentColor"
         strokeWidth="2"
-        strokeLinejoin="round"
+        fill="none"
+      />
+      <path d="M24 18.5v11" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
+      <path d="M30 24h7" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+    </>
+  ),
+  // plan-do-check-act loop with a tick — the continual-improvement cycle a
+  // certified ISO 9001 quality management system runs on
+  iso: (
+    <>
+      <path
+        d="M39 24a15 15 0 1 1-4.4-10.6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
         fill="none"
       />
       <path
-        d="m16.5 23.5 5 5 10-10"
+        d="M35.5 5.5v9h-9"
         stroke="currentColor"
-        strokeWidth="2.25"
+        strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-    </>
-  ),
-  // rosette — a certified management system
-  iso: (
-    <>
-      <circle cx="24" cy="19" r="12" stroke="currentColor" strokeWidth="2" fill="none" />
-      <circle cx="24" cy="19" r="6" stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.55" />
       <path
-        d="M17 29.5 13.5 43l10.5-5.5L34.5 43 31 29.5"
+        d="m17 24.5 4.8 4.8L32 19"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.5"
+        strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
@@ -70,18 +92,44 @@ const glyphs: Record<CertKind, React.ReactNode> = {
       <path d="M24 8v-1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </>
   ),
-  // flask + certificate rule — independent laboratory testing
+  // a specimen under tension between two grips — the tensile test a NABL
+  // accredited lab runs on every batch
   lab: (
     <>
+      <path d="M4.5 24h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
       <path
-        d="M19 6v11L9.5 35a3 3 0 0 0 2.6 4.5h23.8A3 3 0 0 0 38.5 35L29 17V6"
+        d="M8.5 20 4.5 24l4 4"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.5"
+        strokeLinecap="round"
         strokeLinejoin="round"
         fill="none"
       />
-      <path d="M16.5 6h15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-      <path d="M14.5 28h19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" opacity="0.55" />
+      <rect
+        x="13.5"
+        y="18.5"
+        width="21"
+        height="11"
+        rx="1.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+      />
+      <path
+        d="M20 18.5v11M28 18.5v11"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        opacity="0.5"
+      />
+      <path d="M37.5 24h6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+      <path
+        d="M39.5 20l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
+      />
     </>
   ),
 };
