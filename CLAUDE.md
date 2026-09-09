@@ -116,5 +116,15 @@ is fine.
   CM/L number is supplied.
 - The live site duplicates the "Machined — grain cut" card twice under *Forged Before
   Threaded*; this rebuild fixes it to the machined-vs-forged comparison it was meant to be.
-- Only three photographs exist on the live site and factory photos have not been shared, so
-  the hero product and every diagram are drawn as SVG. Reserved slots are commented.
+- **AGBA product photography landed 2026-09-09** and is in `public/images/`: the hero plate
+  (`coupler-hero.jpg`), the slim-wall comparison (`slim-wall-comparison.jpg`), the marked
+  size range (`coupler-sizes-marking.jpg`) and a finished lot (`couplers-batch.jpg`). The
+  drawn `HeroCoupler` it replaced is gone; the technical diagrams stay drawn, because they
+  carry annotation a photograph cannot. Every shot is on a near-black ground except the
+  size range, so the plates are `.on-dark` scoped — see the ATS thread figure for the
+  pattern. **Factory / machine / process photographs are still outstanding**, which is why
+  Machine Services and the works step-sequence have no imagery.
+- The slim-wall photograph shows an AGBA coupler beside an unmarked thick-walled one. It is
+  captioned as "a conventional coupler" and never as any named brand. If AGBA confirm what
+  that second coupler actually is, the caption can get more specific — until then it stays
+  descriptive.

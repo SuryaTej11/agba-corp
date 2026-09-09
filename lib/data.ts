@@ -116,6 +116,9 @@ export const SLIM_WALL = {
   eyebrow: "Slimmer wall, stronger outcome",
   title: "25% SLIMMER WALL",
   lede: "AGBA couplers meet IS 16172 on thread engagement, tensile and fatigue performance — then go further. A 7.75 mm wall on a 32 mm bar versus a conventional 10–12 mm means engineered clearance, built to pour.",
+  /** Caption for the photographed comparison under the drawn sections. */
+  photoCaption:
+    "The same comparison in steel: an AGBA coupler beside a conventional one for the same bar. The wall AGBA does not use is clearance the concrete gets.",
   benefits: [
     "Lower honeycombing",
     "Better concrete flow",
@@ -325,6 +328,8 @@ export const TRACE = {
   sampleHint: "AGB-2504-0187",
   steps: {
     eyebrow: "Find Your Coupler · Traceability",
+    photoCaption:
+      "Ø32, Ø25 and Ø20 couplers — batch numbers 00561, 00562 and 00563, each ring carrying the class, the grade and the BIS licence. This marking is what the search above reads.",
     title: "FROM HEAT NUMBER TO YOUR POUR",
     items: [
       {
@@ -602,5 +607,7 @@ export const COMPANY = {
     eyebrow: "The works",
     title: "C-94, MIDC BUTIBORI",
     body: "Tube inward with heat number logged, cutting, machining, threading, 100% GO / NO-GO gauging, batch marking and despatch — with a test certificate against every lot.",
+    photoCaption:
+      "A finished lot, marked and ready for despatch — every ring carrying the same batch number, class and licence.",
   },
 } as const;

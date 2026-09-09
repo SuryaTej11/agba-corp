@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -7,6 +8,7 @@ import { SpecTable } from "@/components/ui/SpecTable";
 import { KnowledgeCenter } from "@/sections/about/KnowledgeCenter";
 import { NewsSection } from "@/sections/shared/NewsSection";
 import { CTABand } from "@/sections/shared/CTABand";
+import couplersBatch from "@/public/images/couplers-batch.jpg";
 import { ABOUT, COMPANY } from "@/lib/data";
 import { CONTACT } from "@/lib/site";
 
@@ -155,6 +157,22 @@ export default function AboutPage() {
             title={COMPANY.works.title}
             lede={COMPANY.works.body}
           />
+
+          {/* Dark-scoped: the photograph is on a near-black ground. */}
+          <Reveal delay={0.12} className="mt-12">
+            <figure className="on-dark panel overflow-hidden bg-deep">
+              <Image
+                src={couplersBatch}
+                alt="Twenty-five finished AGBA couplers stood on end in rows, each ring laser-marked with the same batch number, class and BIS licence."
+                placeholder="blur"
+                sizes="(min-width: 1280px) 1176px, 100vw"
+                className="h-auto w-full"
+              />
+              <figcaption className="data border-t border-line px-6 py-4 text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
+                {COMPANY.works.photoCaption}
+              </figcaption>
+            </figure>
+          </Reveal>
         </div>
       </Section>
 

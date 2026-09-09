@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { WallSection } from "@/components/illustrations/WallSection";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { Section, SectionHeading } from "@/components/ui/Section";
+import slimWallComparison from "@/public/images/slim-wall-comparison.jpg";
 import { SLIM_WALL } from "@/lib/data";
 
 export function SlimWall() {
@@ -55,6 +57,24 @@ export function SlimWall() {
             </Reveal>
           ))}
         </div>
+
+        {/* The drawn sections make the argument; this is the same comparison in
+            steel. Dark-scoped because the photograph is on a near-black ground
+            and would otherwise sit as a slab on the light band. */}
+        <Reveal delay={0.2} className="mt-5">
+          <figure className="on-dark panel overflow-hidden bg-deep">
+            <Image
+              src={slimWallComparison}
+              alt="An AGBA coupler beside a conventional coupler of the same bar size, with a vernier caliper: the AGBA wall is visibly thinner and its bore cleanly machined."
+              placeholder="blur"
+              sizes="(min-width: 1280px) 1176px, 100vw"
+              className="h-auto w-full"
+            />
+            <figcaption className="data border-t border-line px-6 py-4 text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
+              {SLIM_WALL.photoCaption}
+            </figcaption>
+          </figure>
+        </Reveal>
 
         {/* benefit chips */}
         <RevealGroup className="mt-6 grid gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">

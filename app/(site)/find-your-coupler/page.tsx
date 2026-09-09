@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { TraceChain } from "@/components/illustrations/TraceChain";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
@@ -10,6 +11,7 @@ import { CTABand } from "@/sections/shared/CTABand";
 import { ButtonLink } from "@/components/ui/Button";
 import { hasDownloadAccess } from "@/lib/auth";
 import { listDocuments } from "@/lib/db/queries";
+import couplerSizes from "@/public/images/coupler-sizes-marking.jpg";
 import { TRACE } from "@/lib/data";
 import { CONTACT, ROUTES, telLink } from "@/lib/site";
 
@@ -52,6 +54,23 @@ export default async function FindYourCouplerPage() {
             <div className="panel overflow-x-auto p-6 sm:p-8">
               <TraceChain className="h-auto w-full min-w-[46rem]" />
             </div>
+          </Reveal>
+
+          {/* The marking the lookup actually reads. Left on the light band —
+              this photograph is on a pale ground, unlike the others. */}
+          <Reveal delay={0.15} className="mt-5">
+            <figure className="panel overflow-hidden">
+              <Image
+                src={couplerSizes}
+                alt="Three AGBA couplers in Ø32, Ø25 and Ø20, seen from above, each ring laser-marked with its batch number, class, steel grade and BIS licence number."
+                placeholder="blur"
+                sizes="(min-width: 1280px) 1176px, 100vw"
+                className="h-auto w-full"
+              />
+              <figcaption className="data border-t border-line px-6 py-4 text-[0.62rem] uppercase tracking-[0.16em] text-muted-2">
+                {TRACE.steps.photoCaption}
+              </figcaption>
+            </figure>
           </Reveal>
 
           <RevealGroup className="mt-8 grid gap-5 md:grid-cols-3">
