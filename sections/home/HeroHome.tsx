@@ -2,12 +2,9 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ScanLine } from "lucide-react";
-import { ButtonLink } from "@/components/ui/Button";
 import { Counter } from "@/components/ui/Counter";
 import couplerHero from "@/public/images/coupler-hero.jpg";
 import { HERO } from "@/lib/data";
-import { ROUTES } from "@/lib/site";
 
 export function HeroHome() {
   const reduce = useReducedMotion();
@@ -61,23 +58,9 @@ export function HeroHome() {
             {HERO.lede}
           </motion.p>
 
-          <motion.div
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap"
-            {...rise(0.42)}
-          >
-            <ButtonLink href={`${ROUTES.contact}#enquiry`} className="w-full sm:w-auto">
-              Request a Quote
-              <ArrowRight className="h-4 w-4" strokeWidth={2} />
-            </ButtonLink>
-            <ButtonLink href={ROUTES.trace} variant="ghost" className="w-full sm:w-auto">
-              <ScanLine className="h-4 w-4" strokeWidth={2} />
-              Verify Your Batch
-            </ButtonLink>
-          </motion.div>
-
           {/* --- spec stats --- */}
           <motion.dl
-            className="mt-10 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:mt-14 sm:grid-cols-4"
+            className="mt-12 grid grid-cols-2 gap-px overflow-hidden border border-line bg-line sm:mt-14 sm:grid-cols-4"
             {...rise(0.5)}
           >
             {HERO.stats.map((s) => (
@@ -123,6 +106,7 @@ export function HeroHome() {
             {[...Array(2)].flatMap((_, dup) =>
               [
                 "IS 16172:2023 · CLASS L & H",
+                "BIS LICENCE CM/L-7400091707",
                 "ISO 9001:2015",
                 "ISO 45001:2018",
                 "NABL TESTED · EVERY BATCH",

@@ -11,7 +11,7 @@ import { ROUTES } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Cold Forging & Threading Machine Services",
   description:
-    "AGBA deploys the cold forging and threading machines, tooling, gauges and technicians, so one quality system covers the whole connection. On-site deployment, mobile van service or machine rental.",
+    "AGBA deploys the cold forging and threading machines, tooling, gauges and technicians, so one quality system covers the whole connection. On-site deployment or mobile van service.",
   alternates: { canonical: ROUTES.machines },
 };
 
@@ -67,7 +67,7 @@ export default function MachineServicesPage() {
             lede={models.lede}
           />
 
-          <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-3">
+          <RevealGroup className="mt-14 grid gap-5 lg:grid-cols-2">
             {models.options.map((o) => (
               <RevealItem key={o.title}>
                 <article className="panel panel-hover flex h-full flex-col p-7">

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
       "AGBA Corporation | IS 16172:2023 Parallel-Thread Rebar Couplers, Nagpur",
   },
   description:
-    "Precision parallel-thread rebar couplers — forged before threaded, 100% gauge-checked and NABL tested. Class L & H to IS 16172:2023, Ø12–40 mm, dispatched pan-India from Nagpur.",
+    "Precision parallel-thread rebar couplers, 100% gauge-checked and NABL tested, joining bar ends cold-forged before they are threaded. Class L & H to IS 16172:2023, Ø12–40 mm, dispatched pan-India from Nagpur.",
   alternates: { canonical: "/" },
 };
 

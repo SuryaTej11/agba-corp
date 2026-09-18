@@ -27,6 +27,7 @@ export function CertStrip() {
               kind={m.kind}
               title={m.title}
               subtitle={m.subtitle}
+              reference={m.ref}
               index={i}
             />
           ))}

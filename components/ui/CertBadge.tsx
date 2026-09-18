@@ -138,12 +138,15 @@ export function CertBadge({
   kind,
   title,
   subtitle,
+  reference,
   index = 0,
   className,
 }: {
   kind: CertKind;
   title: string;
   subtitle: string;
+  /** Licence or certificate number — the verifiable part of the claim. */
+  reference?: string;
   index?: number;
   className?: string;
 }) {
@@ -178,6 +181,11 @@ export function CertBadge({
         {title}
       </p>
       <p className="mt-2 text-xs leading-relaxed text-muted">{subtitle}</p>
+      {reference && (
+        <p className="data mt-4 border-t border-line pt-3 text-[0.62rem] uppercase tracking-[0.12em] text-muted-2">
+          {reference}
+        </p>
+      )}
     </motion.div>
   );
 }

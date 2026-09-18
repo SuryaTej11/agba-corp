@@ -15,7 +15,9 @@ export const HERO = {
   titleTop: "BUILD WITH",
   titleAccent: "TRUST.",
   titleBottom: "BUILD WITH AGBA.",
-  lede: "Precision parallel-thread rebar couplers — forged before threaded, 100% gauge-checked and NABL tested. A splice that develops full tensile equivalence with the parent bar.",
+  // The cold forging is done to the *bar end*, not to the coupler. The old
+  // wording read as though the coupler were forged, which it is not.
+  lede: "Precision parallel-thread rebar couplers, 100% gauge-checked and NABL tested — joining bar ends that are cold-forged before they are threaded. A splice that develops full tensile equivalence with the parent bar.",
   stats: [
     { value: "Ø12–40", unit: "", label: "mm bar range" },
     { value: "Class L & H", unit: "", label: "IS 16172:2023" },
@@ -35,24 +37,28 @@ export const CERTIFICATIONS = {
       title: "IS 16172:2023",
       subtitle:
         "Couplers for mechanical splicing of bars — Class L & H, the governing Indian standard.",
+      ref: "BIS Licence CM/L-7400091707",
     },
     {
       kind: "iso" as const,
       title: "ISO 9001:2015",
       subtitle:
         "Certified quality management system across manufacturing and dispatch.",
+      ref: "Certificate GACB9028",
     },
     {
       kind: "safety" as const,
       title: "ISO 45001:2018",
       subtitle:
         "Occupational health & safety management certification at our works.",
+      ref: "Certificate GACB9027",
     },
     {
       kind: "lab" as const,
       title: "NABL Tested",
       subtitle:
         "Independent lab testing with a signed test certificate on every batch.",
+      ref: "Certificate with every batch",
     },
   ],
 } as const;
@@ -61,7 +67,7 @@ export const CERTIFICATIONS = {
 export const WHAT_IS = {
   eyebrow: "The Basics",
   title: "WHAT IS A COUPLER?",
-  lede: "A rebar coupler is a threaded steel sleeve that joins two reinforcement bars end to end, so the join carries load as though the bar were continuous. It replaces the lap splice — the older method of simply overlapping two bars and trusting the concrete between them. The bar ends are cold-forged, cut to a parallel thread form and drawn into the sleeve until the two faces meet, so the load path runs bar, thread, coupler, thread, bar — in steel the whole way, with nothing asked of the concrete around it. IS 16172:2023 governs what that connection has to achieve on thread engagement, tensile strength and behaviour under repeated load, and grades couplers Class L or Class H against it.",
+  lede: "A rebar coupler is a threaded steel sleeve that joins two reinforcement bars end to end, so the join carries load as though the bar were continuous. It replaces the lap splice — the older method of simply overlapping two bars and trusting the concrete between them. The bar ends are cold-forged, cut to a parallel thread form and drawn into the sleeve from either side, so the load path runs bar, thread, coupler, thread, bar — in steel the whole way, with nothing asked of the concrete around it. IS 16172:2023 governs what that connection has to achieve on thread engagement, tensile strength and behaviour under repeated load, and grades couplers Class L or Class H against it.",
   points: [
     {
       title: "It joins bar to bar, directly",
@@ -334,7 +340,7 @@ export const TRACE = {
     items: [
       {
         title: "Stamped at source",
-        body: "Each coupler is marked with a unique batch number tied to the steel heat it was forged from.",
+        body: "Each coupler is marked with a unique batch number tied to the steel heat it was made from.",
       },
       {
         title: "Logged in our system",
@@ -522,16 +528,6 @@ export const MACHINE_SERVICES = {
           "Booked by the day",
           "Suits intermittent volume",
           "Vidarbha and nearby",
-        ],
-      },
-      {
-        title: "Machine rental",
-        body: "Machines and tooling on rent where you have your own trained operator.",
-        points: [
-          "Monthly rental",
-          "Tooling supplied and consumed",
-          "Servicing by AGBA",
-          "Operator training available",
         ],
       },
     ],

@@ -6,7 +6,7 @@ import { diagramRoot, drawIn, fadeIn } from "./motion";
 /**
  * "What is a Coupler?" — annotated cutaway of a completed splice.
  *
- * Two rebar ends, cold-upset and parallel-threaded, meeting inside the coupler
+ * Two rebar ends, cold-upset and parallel-threaded, engaged inside the coupler
  * body. Callout leaders point at the four things that matter: the upset, the
  * thread, the engagement length and the wall.
  *
@@ -36,7 +36,7 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       className={className}
       role="img"
       {...diagramRoot}
-      aria-label="Cutaway of a parallel-thread rebar coupler, drawn to scale for a 32 mm bar: two cold-upset, threaded bar ends meeting inside a 53 mm coupler body, with the engagement length and the 7.75 mm wall marked."
+      aria-label="Cutaway of a parallel-thread rebar coupler, drawn to scale for a 32 mm bar: two cold-upset, threaded bar ends engaged inside a 53 mm coupler body, with the engagement length and the 7.75 mm wall marked."
     >
       {/* ---- ribbed rebar, left ------------------------------------------ */}
       <motion.g stroke="var(--ill-stroke)" strokeWidth="1.5" fill="none">
@@ -78,9 +78,11 @@ export function CouplerAnatomy({ className }: { className?: string }) {
       </motion.g>
 
       {/* ---- parallel threads, both bar ends, inside the body ------------
-           The two threaded ends run all the way to the centre and butt
-           together, so the drawing shows a splice that is actually made up
-           rather than two halves waiting to be joined. */}
+           Both ends are drawn fully engaged. The drawing deliberately does NOT
+           claim the two bar faces butt together at the centre: whether they
+           meet depends on bar cut length and how far each end is run in, and
+           IS 16172 asks for thread engagement, not contact. The centre line
+           marks where the two engaged ends meet each other, nothing more. */}
       {[206, 380].map((x0, side) => (
         <motion.g key={x0} stroke="var(--ill-bright)" strokeWidth="1.4" fill="none" opacity="0.9">
           <rect x={x0} y="129" width="174" height="82" fill="var(--ill-deep)" />
@@ -94,8 +96,9 @@ export function CouplerAnatomy({ className }: { className?: string }) {
         </motion.g>
       ))}
 
-      {/* centre joint line — drawn over the threads, marking where the two
-          bar ends meet. This is what callout 03 points at. */}
+      {/* centre line — the boundary between the two engaged ends. Dashed
+          rather than solid precisely because it is not a claimed contact
+          face. This is what callout 03 points at. */}
       <motion.path
         d="M380 129 v82"
         stroke="var(--color-red)"
@@ -169,11 +172,11 @@ export function CouplerAnatomy({ className }: { className?: string }) {
           <text x="172" y="73">
             PARALLEL THREAD
           </text>
-          <text x="238" y="296" fill="var(--color-red)">
+          <text x="212" y="296" fill="var(--color-red)">
             03
           </text>
-          <text x="260" y="296">
-            BAR ENDS MEET
+          <text x="234" y="296">
+            BOTH ENDS ENGAGED
           </text>
           <text x="618" y="266" fill="var(--color-red)">
             04

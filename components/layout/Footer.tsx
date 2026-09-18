@@ -12,8 +12,9 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
-              IS 16172:2023 certified parallel-thread rebar couplers — forged
-              before threaded, 100% gauge-checked, NABL tested.{" "}
+              IS 16172:2023 certified parallel-thread rebar couplers, 100%
+              gauge-checked and NABL tested, joining bar ends cold-forged
+              before they are threaded.{" "}
               <span className="text-heading">Build with trust. Build with AGBA.</span>
             </p>
             <p className="data mt-6 text-xs tracking-wider text-muted-2">

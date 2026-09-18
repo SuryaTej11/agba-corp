@@ -19,7 +19,7 @@ export const SITE = {
   lockupTagline: "Integrity in every connection",
   url: "https://agbacorp.com",
   description:
-    "IS 16172:2023 certified parallel-thread rebar couplers — forged before threaded, 100% gauge-checked, NABL tested. Manufactured at Butibori MIDC, Nagpur and dispatched direct to site across India.",
+    "IS 16172:2023 certified parallel-thread rebar couplers, 100% gauge-checked and NABL tested, joining bar ends cold-forged before they are threaded. Manufactured at Butibori MIDC, Nagpur and dispatched direct to site across India.",
   keywords: [
     "rebar coupler",
     "parallel thread coupler",
