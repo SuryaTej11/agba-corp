@@ -1,3 +1,4 @@
+import { type StaticImageData } from "next/image";
 import { Download, ScanLine } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 import { CertBadge } from "@/components/ui/CertBadge";
@@ -28,6 +29,10 @@ export function CertStrip() {
               title={m.title}
               subtitle={m.subtitle}
               reference={m.ref}
+              // No mark carries artwork yet, so the literal type has no `logo`
+              // key to narrow against. Typed here rather than loosening the
+              // data, so adding one file is still the only change needed.
+              logo={(m as { logo?: StaticImageData }).logo}
               index={i}
             />
           ))}

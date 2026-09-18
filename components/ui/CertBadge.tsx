@@ -1,5 +1,6 @@
 "use client";
 
+import Image, { type StaticImageData } from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -11,12 +12,24 @@ import { cn } from "@/lib/utils";
  * that ISO 9001 certifies, the head protection ISO 45001 is about, and the
  * tensile test a NABL lab performs.
  *
- * These are AGBA's own drawings, NOT the official certification marks. The ISI
- * (BIS) Standard Mark, a registrar's ISO mark and the NABL symbol are all
- * controlled artwork, released to the licence holder by the issuing body and
- * governed by its own usage rules — they are never approximated by hand. To
- * show a real mark here, drop in the artwork from AGBA's certificate and the
- * licence number that goes with it.
+ * These are AGBA's own drawings, NOT the official certification marks.
+ *
+ * TO SHOW THE REAL MARKS: pass `logo` on the mark in `CERTIFICATIONS.marks`
+ * (lib/data.ts) as a static import of the artwork file, e.g.
+ *
+ *   import isiMark from "@/public/images/isi-mark.svg";
+ *   { kind: "standard", title: "IS 16172:2023", logo: isiMark, ... }
+ *
+ * and the drawn glyph steps aside for it. Nothing else needs changing.
+ *
+ * The artwork must be the issuing body's own file, never a redraw:
+ *   - ISI (BIS) Standard Mark — form is fixed by Annexure-II of Scheme-I,
+ *     Schedule-II of the BIS CA Regulations 2018; BIS issues it with the
+ *     licence (AGBA hold CM/L-7400091707) and audits its use.
+ *   - ISO 9001 / 45001 — there is NO ISO logo a certified company may use;
+ *     ISO prohibits it. What is usable is the certification body's accredited
+ *     mark, supplied with certificates GACB9028 / GACB9027.
+ *   - NABL — symbol use is restricted to the accredited laboratory.
  */
 
 export type CertKind = "standard" | "iso" | "safety" | "lab";
@@ -139,6 +152,7 @@ export function CertBadge({
   title,
   subtitle,
   reference,
+  logo,
   index = 0,
   className,
 }: {
@@ -147,6 +161,8 @@ export function CertBadge({
   subtitle: string;
   /** Licence or certificate number — the verifiable part of the claim. */
   reference?: string;
+  /** Official artwork from the issuing body. Replaces the drawn glyph. */
+  logo?: StaticImageData;
   index?: number;
   className?: string;
 }) {
@@ -167,15 +183,22 @@ export function CertBadge({
         className,
       )}
     >
-      <svg
-        viewBox="0 0 48 48"
-        className={cn(
-          "h-11 w-11 text-red transition-colors duration-500 group-hover:text-red-bright",
-        )}
-        aria-hidden="true"
-      >
-        {glyphs[kind]}
-      </svg>
+      {logo ? (
+        <Image
+          src={logo}
+          alt=""
+          aria-hidden="true"
+          className="h-11 w-auto object-contain"
+        />
+      ) : (
+        <svg
+          viewBox="0 0 48 48"
+          className="h-11 w-11 text-red transition-colors duration-500 group-hover:text-red-bright"
+          aria-hidden="true"
+        >
+          {glyphs[kind]}
+        </svg>
+      )}
 
       <p className="data mt-5 text-[0.8rem] font-medium tracking-[0.1em] text-heading uppercase">
         {title}
