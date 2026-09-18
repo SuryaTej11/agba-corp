@@ -184,11 +184,13 @@ export function CertBadge({
       )}
     >
       {logo ? (
+        // Slightly taller than the drawn glyphs: a dense logo with its own
+        // lettering reads smaller than a line icon in the same box.
         <Image
           src={logo}
           alt=""
           aria-hidden="true"
-          className="h-11 w-auto object-contain"
+          className="h-14 w-auto object-contain"
         />
       ) : (
         <svg

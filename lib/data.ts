@@ -1,3 +1,8 @@
+import isiMark from "@/public/images/isi-mark.png";
+import iso9001 from "@/public/images/iso-9001.png";
+import iso45001 from "@/public/images/iso-45001.png";
+import nablMark from "@/public/images/nabl.png";
+
 /**
  * Static page copy.
  *
@@ -38,6 +43,8 @@ export const CERTIFICATIONS = {
       subtitle:
         "Couplers for mechanical splicing of bars — Class L & H, the governing Indian standard.",
       ref: "BIS Licence CM/L-7400091707",
+      // The BIS Standard Mark, as supplied by AGBA. Never redraw it.
+      logo: isiMark,
     },
     {
       kind: "iso" as const,
@@ -45,6 +52,7 @@ export const CERTIFICATIONS = {
       subtitle:
         "Certified quality management system across manufacturing and dispatch.",
       ref: "Certificate GACB9028",
+      logo: iso9001,
     },
     {
       kind: "safety" as const,
@@ -52,6 +60,7 @@ export const CERTIFICATIONS = {
       subtitle:
         "Occupational health & safety management certification at our works.",
       ref: "Certificate GACB9027",
+      logo: iso45001,
     },
     {
       kind: "lab" as const,
@@ -59,6 +68,7 @@ export const CERTIFICATIONS = {
       subtitle:
         "Independent lab testing with a signed test certificate on every batch.",
       ref: "Certificate with every batch",
+      logo: nablMark,
     },
   ],
 } as const;
